@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#292057">
-<title>AlumChrom Plate Scanner v1.11 · Capture • Align • Analyze</title>
+<title>AlumChrom Plate Scanner v1.11.1 · Capture • Align • Analyze</title>
 <style>
 :root{--bg:#f7f7fb;--panel:#fff;--ink:#261d43;--muted:#716b82;--border:#e6e3ef;--violet:#5636ac;--violet2:#3d268e;--shadow:0 10px 28px rgba(34,22,85,.07);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
 *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg)}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}input[type=file]{display:none}[hidden]{display:none!important}
@@ -136,7 +136,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 @media(max-width:880px){.v19EditLayout{grid-template-columns:1fr;overflow-y:auto}.v19WellSidebar{border-left:0;border-top:1px solid #e2e8f3;max-height:230px;overflow:auto}.v19WellButtons{grid-template-columns:repeat(10,1fr)}.v19EditorActions{flex-direction:row;flex-wrap:wrap}.v19EditorActions .btn{flex:1}.v19ZoomViewport canvas{max-height:47dvh}}
 @media(max-width:580px){.v19Dialog{max-height:calc(100dvh - 12px)}.v19Modal{padding:6px}.v19EditorHeader{padding:11px}.v19EditorHeader h2{font-size:16px}.v19EditorHeader p{font-size:10px}.v19ZoomToolbar{gap:5px}.v19HelpHint{width:100%;font-size:10px;margin:0}.v19ZoomViewport canvas{max-height:46dvh}.v19WellButtons{grid-template-columns:repeat(6,1fr)}.v19WellSidebar{max-height:none;overflow:visible}.v19UnderImage{align-items:stretch}.v19UnderImage button{flex:1}.v19UnderImage p{flex-basis:100%;text-align:left}.v19WelcomeActions{flex-direction:column}.v19WelcomeActions .btn{width:100%;max-width:350px}}
 
-/* v1.11 — guided 4-corner capture / manual image rotation */
+/* v1.11.1 — guided 4-corner capture / manual image rotation */
 .v11ImageControls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
 .v11ImageControls .btn{min-width:155px;min-height:44px;padding:11px 16px}
 .v11RotateUpload{border-color:#b9ddec!important;background:#eefaff!important;color:#235d88!important}
@@ -154,7 +154,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <ellipse cx="32" cy="32" fill="none" rx="26.5" ry="11.5" stroke="#FA79AA" stroke-width="3.3" transform="rotate(33 32 32)"></ellipse>
 <ellipse cx="32" cy="32" fill="none" rx="26.5" ry="11.5" stroke="#B28DED" stroke-width="3.1" transform="rotate(90 32 32)"></ellipse>
 <circle cx="10.4" cy="19.2" fill="#4EC9EF" r="4.2"></circle><circle cx="50.5" cy="42.0" fill="#F276AC" r="4.1"></circle>
-</svg></div><div><div class="kicker">THAMAI PHUN SAWAT RAT NUKUL SCHOOL · CHEMISTRY PROJECT</div><div class="brandName">ALUMCHROM <span class="v17Version">PLATE SCANNER v1.11</span></div></div></div>
+</svg></div><div><div class="kicker">THAMAI PHUN SAWAT RAT NUKUL SCHOOL · CHEMISTRY PROJECT</div><div class="brandName">ALUMCHROM <span class="v17Version">PLATE SCANNER v1.11.1</span></div></div></div>
 </div></header>
 <main class="main v17Main">
 <section class="v17Welcome panel v18Welcome" id="v17Welcome"><div class="v17WelcomeArt"><span class="v17Orb"><svg aria-label="AlumChrom atom icon" class="v18Atom" height="44" role="img" viewbox="0 0 64 64" width="44" xmlns="http://www.w3.org/2000/svg">
@@ -248,7 +248,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <p class="help">ผลจากการเทียบสีเป็นการคัดกรองเชิงภาพเท่านั้น ค่าโซน 0 หมายถึงไม่พบ Blue Signal เพิ่มจาก blank ตามเกณฑ์ ไม่ใช่การยืนยันว่าไม่มี Al³⁺</p>
 </div></section></section>
 </section>
-<p class="v17Footnote">AlumChrom Plate Scanner v1.11 · 4-Corner Capture สำหรับโหมด Template · PDF Master Template 1.6</p>
+<p class="v17Footnote">AlumChrom Plate Scanner v1.11.1 · 4-Corner Capture สำหรับโหมด Template · PDF Master Template 1.6</p>
 </main>
 <div class="v19Modal" id="v19Modal" hidden role="dialog" aria-modal="true" aria-labelledby="v19EditorTitle">
 <div class="v19Dialog"><div class="v19EditorHeader"><div><div class="over">WELL POSITION EDITOR</div><h2 id="v19EditorTitle">ซูมและแก้ไขตำแหน่งหลุม</h2><p>เลื่อนภาพได้อิสระ · ลากวงหลุมให้ตรง · เลือกหลุมจากรายชื่อด้านขวา</p></div><button type="button" class="btn" id="v19EditorDoneTop">เสร็จสิ้น ✓</button></div>
@@ -493,7 +493,7 @@ function exportCSV(){
 }
 function reportText(){
  if(!analysis)return 'ยังไม่มีผลการวิเคราะห์';
- let txt=`AlumChrom Plate Scanner v1.11 · Capture • Align • Analyze · Blue Signal\nภาพ: ${imageName}\nมาตรฐานในภาพ: ${LEVELS.join(', ')} mg/L\nหลักการ: Blue Signal = b*มาตรฐาน0 − b*ตัวอย่าง\n`;
+ let txt=`AlumChrom Plate Scanner v1.11.1 · Capture • Align • Analyze · Blue Signal\nภาพ: ${imageName}\nมาตรฐานในภาพ: ${LEVELS.join(', ')} mg/L\nหลักการ: Blue Signal = b*มาตรฐาน0 − b*ตัวอย่าง\n`;
  analysis.sampleResults.forEach(r=>{txt+=`\nตัวอย่าง ${r.sample}: ${formatResult(r.estimation)} · Blue Signal ${r.estimation?r.estimation.blueSignal.toFixed(2):'—'} b* · อ่านได้ ${r.filledCount}/3 ${r.estimation?.warning||''}`});
  return txt+'\n\nหมายเหตุ: โซน 0 ไม่ใช่หลักฐานยืนยันว่าอะลูมิเนียมไม่มีอยู่จริง ต้องตรวจสอบกับ blank มาตรฐานและ LOD'
 }
@@ -1318,6 +1318,9 @@ function v19ScoreBand(pixels,w,h,quad,u0,u1,v0,v1){
  }
  return {dark:black,valid,ratio:valid?black/valid:0};
 }
+// v1.11.1.1: Orient the template using the complete 26-marker geometry.
+// Counting dark pixels in the exterior text bands alone is NOT reliable when
+// the tray is transparent or when additional paper is in the photo.
 function v19TemplateOrientation(){
  const ds=downscaledImage(860),w=ds.w,h=ds.h,pixels=ds.ctx.getImageData(0,0,w,h).data;
  const all=findMarkerCandidates(pixels,w,h),q=v19FindCornerMarkers(all,w,h);
@@ -1328,18 +1331,43 @@ function v19TemplateOrientation(){
   [q[2],q[3],q[0],q[1]],
   [q[1],q[2],q[3],q[0]]
  ];
- const ranked=variants.map((quad,turns)=>{
-  const left=v19ScoreBand(pixels,w,h,quad,-.140,-.035,.10,.90);
-  const bottom=v19ScoreBand(pixels,w,h,quad,.13,.88,1.045,1.155);
-  const right=v19ScoreBand(pixels,w,h,quad,1.035,1.140,.10,.90);
-  const top=v19ScoreBand(pixels,w,h,quad,.13,.88,-.155,-.045);
-  // Balanced evidence: text on both left and bottom, absent on right/top.
-  const score=3*Math.min(left.ratio,bottom.ratio)+left.ratio+bottom.ratio-1.1*(right.ratio+top.ratio);
-  return {turns,score,left:left.ratio,bottom:bottom.ratio,right:right.ratio,top:top.ratio,quad};
- }).sort((a,b)=>b.score-a.score);
+ const detected=all.map(p=>({...p,x:p.x*ds.scaleX,y:p.y*ds.scaleY}));
+ const previousCorners=corners;
+ let ranked=[];
+ try{
+  ranked=variants.map((quad,turns)=>{
+   const scaled=quad.map(p=>({x:p.x*ds.scaleX,y:p.y*ds.scaleY}));
+   // A projective mapping based on all four true fiducials preserves the full
+   // known pattern of top/bottom/left/right markers for every candidate turn.
+   corners=scaled;
+   const H=v15FitHomography([
+    {u:0,v:0,...scaled[0]}, {u:1,v:0,...scaled[1]},
+    {u:1,v:1,...scaled[2]}, {u:0,v:1,...scaled[3]}
+   ]);
+   let matches=0,meanError=Infinity;
+   if(H){
+    const pairs=v15MarkerPairs(detected,H);
+    matches=pairs.length;
+    if(matches)meanError=pairs.reduce((sum,p)=>sum+p.d,0)/matches;
+   }
+   // Printed labels are only weak supporting evidence, never a stronger
+   // indication than the agreement of 26 individually placed fiducials.
+   const left=v19ScoreBand(pixels,w,h,quad,-.140,-.035,.10,.90);
+   const bottom=v19ScoreBand(pixels,w,h,quad,.13,.88,1.045,1.155);
+   const right=v19ScoreBand(pixels,w,h,quad,1.035,1.140,.10,.90);
+   const top=v19ScoreBand(pixels,w,h,quad,.13,.88,-.155,-.045);
+   const textScore=3*Math.min(left.ratio,bottom.ratio)+left.ratio+bottom.ratio-1.1*(right.ratio+top.ratio);
+   const score=matches*7-(Number.isFinite(meanError)?2*meanError:999)+0.12*textScore;
+   return {turns,score,matches,meanError,left:left.ratio,bottom:bottom.ratio,right:right.ratio,top:top.ratio,quad};
+  }).sort((a,b)=>b.score-a.score);
+ }finally{corners=previousCorners;}
  const best=ranked[0],other=ranked[1];
- const confidence=(best.left>.006&&best.bottom>.006&&best.score>other.score+.020);
- return {rotations:ranked,turns:best.turns,confidence,markers:all.length,score:best.score,margin:best.score-other.score};
+ // Low-confidence geometry must report detection uncertainty, never accuse
+ // the user of holding correctly oriented paper upside down.
+ const confidence=best.matches>=16 && best.meanError<=Math.max(6,Math.min(off.width,off.height)*.012)
+   && (best.score-other.score>=1.5);
+ return {rotations:ranked,turns:best.turns,confidence,markers:all.length,matched:best.matches,
+  error:best.meanError,score:best.score,margin:best.score-other.score};
 }
 function v19Status(title,info,warning=false){
  $('v19DetectTitle').textContent=title;$('v19DetectInfo').textContent=info;
@@ -1450,8 +1478,19 @@ function v19ApplyImageAlignment(){
    setStatus('ยังไม่สามารถอ่านผล · กรุณาจัดทิศทางภาพให้ถูกต้อง','warn');
    return false;
   }
-  autoDetectCorners();
+  // Reuse the verified four corners from the SAME full-pattern match.
+  // A second corner search based on the outermost dark objects is unsafe:
+  // unrelated paper or a dark edge above the plate can shift its bounds.
+  const verified=downscaledImage(860);
+  const verifiedPixels=verified.ctx.getImageData(0,0,verified.w,verified.h).data;
+  corners=detection.rotations[0].quad.map(p=>({x:p.x*verified.scaleX,y:p.y*verified.scaleY}));
+  geometryMode='marker';manualMode=false;v15ResetGeometry();
+  const candidates=findMarkerCandidates(verifiedPixels,verified.w,verified.h)
+    .map(p=>({...p,x:p.x*verified.scaleX,y:p.y*verified.scaleY}));
+  v15UpdateHomography(candidates);
   if(corners.length===4&&v15MarkerMatches.length>=12){
+   v16LightingCorrection();analyzePlate();
+   setStatus('ตรวจมาร์กจาก Template และวางวงอ่านสีแล้ว · ตรวจสอบตำแหน่งก่อนอ่านผล','good');
    v19DetectionValid=true;v19OrientationLabel='ภาพอยู่ในแนวถูกต้อง';
    v19Status('ตรวจ Template สำเร็จ','S–D ทางซ้าย / 1–6 ด้านล่าง · ตรวจมาร์ก '+v15MarkerMatches.length+'/26 จุด');
    return true;
@@ -1462,8 +1501,8 @@ function v19ApplyImageAlignment(){
  // silently treat the template as a markerless plate with the wrong well labels.
  if(v16Mode==='template'||(detection&&!detection.confidence&&v16Mode==='upload'&&detection.margin>0.004)){
   const action=v16Mode==='upload'?'หมุนภาพด้วยตนเองหรือเปลี่ยนภาพ':'ถ่ายใหม่';
-  v19Status('ยังยืนยันทิศทาง Template ไม่ได้','กรุณาให้เห็นมาร์ก อักษร S–D และเลข 1–6 ชัดเจน แล้ว'+action,true);
-  setStatus('ยังยืนยันตำแหน่งหลุมจาก Template ไม่ได้','warn');return false;
+  v19Status('ยังระบุตำแหน่งมาร์กได้ไม่เพียงพอ','กรุณาให้เห็นมาร์กดำรอบ Template ชัดเจน แล้ว'+action,true);
+  setStatus('ยังตรวจมาร์กอ้างอิงไม่เพียงพอสำหรับวางตำแหน่งหลุม','warn');return false;
  }
  // No-template modes use the existing validated 30-well grid detector.
  try{const free=v19DetectWellGrid();if(free&&v19ApplyFreeGrid(free)){
@@ -1586,7 +1625,7 @@ $('v16NewImage').addEventListener('click',()=>{$('v16NewImage').textContent=v16M
 window.AlumChromV19={getStage:()=>v17CurrentPage,orient:v19TemplateOrientation,detectFree:v19DetectWellGrid,getDetection:()=>({valid:v19DetectionValid,mode:v16Mode,orientation:v19OrientationLabel,free:v19DetectedWells}),getEditor:()=>({open:v19IsOpen,selected:v19Selected,zoom:v19Zoom}),version:'1.9'};
 
 
-// v1.11: Upload mode ONLY — rotate clockwise by 90 degrees on explicit click.
+// v1.11.1: Upload mode ONLY — rotate clockwise by 90 degrees on explicit click.
 $('v11RotateUpload').addEventListener('click',()=>{
  if(v16Mode!=='upload'||!originalImage)return;
  rotateImage();
@@ -1596,7 +1635,7 @@ $('v11RotateUpload').addEventListener('click',()=>{
  toast('หมุนภาพ 90° แล้ว · ตรวจสอบตำแหน่งหลุมใหม่');
 });
 window.AlumChromV111={
- version:'1.11',captureTargets:v11TargetGeometry,inspectCapture:v11InspectCapture,
+ version:'1.11.1',captureTargets:v11TargetGeometry,inspectCapture:v11InspectCapture,
  getStage:()=>v17CurrentPage,getMode:()=>v16Mode,
  getState:()=>({ready:v17CameraReady,orientationRotation:rotation,valid:v19DetectionValid,overlayVisible:v16Mode==='template'&&v17CurrentPage===2})
 };
