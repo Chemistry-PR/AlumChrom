@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#292057">
-<title>AlumChrom Plate Scanner v1.9 · Capture • Align • Analyze</title>
+<title>AlumChrom Plate Scanner v1.10 · Capture • Align • Analyze</title>
 <style>
 :root{--bg:#f7f7fb;--panel:#fff;--ink:#261d43;--muted:#716b82;--border:#e6e3ef;--violet:#5636ac;--violet2:#3d268e;--shadow:0 10px 28px rgba(34,22,85,.07);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
 *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg)}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}input[type=file]{display:none}[hidden]{display:none!important}
@@ -24,15 +24,15 @@
 .v17CameraBox{border:5px solid #cb6f76;border-radius:15px;max-width:1000px;margin:14px auto 10px;background:#18141d;position:relative;box-shadow:0 8px 28px #15101c23}.v17CameraBox.is-ready{border-color:#1ba873;box-shadow:0 4px 24px rgba(12,158,105,.18)}.v17CameraBox.is-pending{border-color:#d65b68}.v17CameraBox.is-manual{border-color:#736b9f!important}.v17CameraBox.is-manual .v17CameraBadge{background:#4f4779!important}
 .v17CameraBox #v16Video{position:absolute;width:1px!important;height:1px!important;opacity:0;pointer-events:none}.v17CameraBox canvas{display:block;width:100%;height:auto;max-height:65vh;object-fit:contain;margin:auto;background:#1d1b20}
 .v17CameraBadge{position:absolute;top:12px;left:12px;border-radius:100px;color:#fff;padding:7px 12px;font-size:12px;font-weight:850;background:#8c3549dc;box-shadow:0 6px 13px #1c102236}.v17CameraBox.is-ready .v17CameraBadge{background:#136c4ddb}
-.v17CameraMetrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-width:1000px;margin:6px auto 12px}.v17CameraMetrics>div{border:1px solid #e9e3f2;border-radius:11px;padding:10px;background:#fdfcff}.v17CameraMetrics span{font-size:11px;color:#746a83;display:block}.v17CameraMetrics b{font-size:18px;color:#35265a;display:block;margin-top:3px}
+
 .v17CameraMessage{max-width:1000px;margin:12px auto}.v17CameraToolbar{justify-content:center}.v17CameraToolbar #v16Shoot{min-width:180px}.btn:disabled{cursor:not-allowed!important;opacity:.48;box-shadow:none!important}
 .v17UploadArea{text-align:center;border:2px dashed #cfc3e8;border-radius:18px;background:#fbfaff;padding:44px 20px;margin-top:14px}.v17UploadArea h3{font-size:21px;margin:9px 0}.v17UploadArea p{font-size:13px;color:#766c82;line-height:1.7}.v17UploadIcon{font-size:52px;color:#795ac1}
 .v17Page .workGrid{margin-top:0}.v17Page .resultsPanel{margin-top:0}.v17Footnote{text-align:center;color:#878092;font-size:11px;margin:24px 0 0}.v17Page #v16ResultsPanel .sampleGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:1000px){.v17Page .modeGrid{grid-template-columns:1fr}.v17Page .modeCard{min-height:110px}.v17Page #v16ResultsPanel .sampleGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:720px){.v17StepBar{gap:5px}.v17StepBar .stepChip{font-size:10px;padding:10px 4px}.v17Welcome{margin:16px auto 24px;padding:35px 17px}.v17Page>.panel>.panelInner{padding:17px}.v17CameraMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}.v17CameraMetrics b{font-size:15px}.v17Actions .btn{flex:1}.v17Page .workGrid{grid-template-columns:1fr}.v17Page #v16ResultsPanel .sampleGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.v17StepBar{gap:5px}.v17StepBar .stepChip{font-size:10px;padding:10px 4px}.v17Welcome{margin:16px auto 24px;padding:35px 17px}.v17Page>.panel>.panelInner{padding:17px}.v17Actions .btn{flex:1}.v17Page .workGrid{grid-template-columns:1fr}.v17Page #v16ResultsPanel .sampleGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 
-/* v1.9 — AlumChrom brand + five-step results experience */
+/* v1.10 — AlumChrom brand + five-step results experience */
 :root {--bg:#F6F9FD;--ink:#24314B;--muted:#65758E;--border:#E3E9F3;--violet:#6553B6;--violet2:#51409B;--pink:#F16AAB;--cyan:#42BEE9;--shadow:0 14px 38px rgba(40,65,105,.065);font-family:'Anuphan','Noto Sans Thai','Segoe UI',Tahoma,sans-serif}
 body,button,input,table{font-family:'Anuphan','Noto Sans Thai','Segoe UI',Tahoma,sans-serif}
 body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(--bg)}
@@ -95,7 +95,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 @media(max-width:380px){.v18ToolGroup .toolbar,.v18ImageActions{grid-template-columns:1fr}.v17StepBar .stepChip{min-width:104px}}
 
 
-/* v1.9 - orientation-aware, minimal review and zoomable per-well editor */
+/* v1.10 - orientation-aware, minimal review and zoomable per-well editor */
 .v19WelcomeActions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:7px}
 .v19WelcomeActions .btn{min-height:59px;padding:15px 25px;font-weight:750;font-size:14px}
 .v19TemplateButton{color:#4c5390;border-color:#cfd8ef;background:#f7fbff}
@@ -147,7 +147,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <ellipse cx="32" cy="32" fill="none" rx="26.5" ry="11.5" stroke="#FA79AA" stroke-width="3.3" transform="rotate(33 32 32)"></ellipse>
 <ellipse cx="32" cy="32" fill="none" rx="26.5" ry="11.5" stroke="#B28DED" stroke-width="3.1" transform="rotate(90 32 32)"></ellipse>
 <circle cx="10.4" cy="19.2" fill="#4EC9EF" r="4.2"></circle><circle cx="50.5" cy="42.0" fill="#F276AC" r="4.1"></circle>
-</svg></div><div><div class="kicker">THAMAI PHUN SAWAT RAT NUKUL SCHOOL · CHEMISTRY PROJECT</div><div class="brandName">ALUMCHROM <span class="v17Version">PLATE SCANNER v1.9</span></div></div></div>
+</svg></div><div><div class="kicker">THAMAI PHUN SAWAT RAT NUKUL SCHOOL · CHEMISTRY PROJECT</div><div class="brandName">ALUMCHROM <span class="v17Version">PLATE SCANNER v1.10</span></div></div></div>
 </div></header>
 <main class="main v17Main">
 <section class="v17Welcome panel v18Welcome" id="v17Welcome"><div class="v17WelcomeArt"><span class="v17Orb"><svg aria-label="AlumChrom atom icon" class="v18Atom" height="44" role="img" viewbox="0 0 64 64" width="44" xmlns="http://www.w3.org/2000/svg">
@@ -188,7 +188,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <video autoplay="" id="v16Video" muted="" playsinline=""></video><canvas aria-label="ภาพกล้องสดพร้อมกรอบตรวจมาร์ก" height="520" id="v17LiveCanvas" width="850"></canvas>
 <div class="v17CameraBadge" id="v17CameraBadge">● กำลังตรวจแนวกล้อง</div>
 </div>
-<div aria-live="polite" class="v17CameraMetrics" id="v17CameraMetrics"><div><span>มาร์กที่ตรวจพบ</span><b id="v17MarkerCount">—</b></div><div><span>มุมมอง / Perspective</span><b id="v17Perspective">—</b></div><div><span>ความเอียงภาพ</span><b id="v17Rotation">—</b></div><div><span>ความคมชัด</span><b id="v17Sharpness">—</b></div></div>
+
 <div class="hint v17CameraMessage" id="v16CameraMessage">ระบบจะขออนุญาตกล้องและตรวจแนวภาพ</div>
 <div class="toolbar v17CameraToolbar"><button class="btn primary big" disabled="" id="v16Shoot" type="button">📷 ถ่ายภาพ</button><button class="btn" id="v16Flip" type="button">สลับกล้อง</button><button class="btn" id="v16RetryCamera" type="button">เปิดกล้องอีกครั้ง</button><button class="btn" id="v16FallbackBtn" type="button">ใช้กล้อง/รูปจากอุปกรณ์แทน</button><button class="btn" id="v16CloseCamera" type="button">ปิดกล้อง</button></div>
 </div>
@@ -241,7 +241,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <p class="help">ผลจากการเทียบสีเป็นการคัดกรองเชิงภาพเท่านั้น ค่าโซน 0 หมายถึงไม่พบ Blue Signal เพิ่มจาก blank ตามเกณฑ์ ไม่ใช่การยืนยันว่าไม่มี Al³⁺</p>
 </div></section></section>
 </section>
-<p class="v17Footnote">AlumChrom Plate Scanner v1.9 · Camera Alignment สำหรับโหมด Template · PDF Master Template 1.6</p>
+<p class="v17Footnote">AlumChrom Plate Scanner v1.10 · Camera Alignment สำหรับโหมด Template · PDF Master Template 1.6</p>
 </main>
 <div class="v19Modal" id="v19Modal" hidden role="dialog" aria-modal="true" aria-labelledby="v19EditorTitle">
 <div class="v19Dialog"><div class="v19EditorHeader"><div><div class="over">WELL POSITION EDITOR</div><h2 id="v19EditorTitle">ซูมและแก้ไขตำแหน่งหลุม</h2><p>เลื่อนภาพได้อิสระ · ลากวงหลุมให้ตรง · เลือกหลุมจากรายชื่อด้านขวา</p></div><button type="button" class="btn" id="v19EditorDoneTop">เสร็จสิ้น ✓</button></div>
@@ -486,7 +486,7 @@ function exportCSV(){
 }
 function reportText(){
  if(!analysis)return 'ยังไม่มีผลการวิเคราะห์';
- let txt=`AlumChrom Plate Scanner v1.9 · Capture • Align • Analyze · Blue Signal\nภาพ: ${imageName}\nมาตรฐานในภาพ: ${LEVELS.join(', ')} mg/L\nหลักการ: Blue Signal = b*มาตรฐาน0 − b*ตัวอย่าง\n`;
+ let txt=`AlumChrom Plate Scanner v1.10 · Capture • Align • Analyze · Blue Signal\nภาพ: ${imageName}\nมาตรฐานในภาพ: ${LEVELS.join(', ')} mg/L\nหลักการ: Blue Signal = b*มาตรฐาน0 − b*ตัวอย่าง\n`;
  analysis.sampleResults.forEach(r=>{txt+=`\nตัวอย่าง ${r.sample}: ${formatResult(r.estimation)} · Blue Signal ${r.estimation?r.estimation.blueSignal.toFixed(2):'—'} b* · อ่านได้ ${r.filledCount}/3 ${r.estimation?.warning||''}`});
  return txt+'\n\nหมายเหตุ: โซน 0 ไม่ใช่หลักฐานยืนยันว่าอะลูมิเนียมไม่มีอยู่จริง ต้องตรวจสอบกับ blank มาตรฐานและ LOD'
 }
@@ -833,7 +833,7 @@ $('refineWellsBtn').addEventListener('click',v15RefineWellCenters);
 // Hook the new calibration into that exact user action, without an extra click.
 // Manual completion handled once on fourth reference point.
 
-// v1.9: file input is handled once in v17HandleFile (avoids double upload processing).
+// v1.10: file input is handled once in v17HandleFile (avoids double upload processing).
 $('demoBtn').addEventListener('click',()=>loadImage(DEMO_IMAGE,'ภาพถาดจริงแผ่นใหม่ (ยังไม่มีน้ำยา)'));
 $('autoBtn').addEventListener('click',autoDetectCorners);
 $('manualBtn').addEventListener('click',()=>startManual('marker'));
@@ -950,7 +950,7 @@ function v17InspectFrame(data,w,h){
  const result={ok:false,message:'ไม่พบมาร์กดำรอบ Template ครบ',markers:0,focus,perspective:null,rotation:null,quad:null,reason:'markers'};
  if(all.length<8)return result;
  const med=median(all.map(p=>p.area));
- const clean=all.filter(p=>p.area<=med*3.4 && p.width/p.height>.65&&p.width/p.height<1.55);
+ const clean=all.filter(p=>p.area<=med*3.4 && p.width/p.height>.52&&p.width/p.height<1.85);
  if(clean.length<8)return result;
  const lx=Math.min(...clean.map(p=>p.x)),hx=Math.max(...clean.map(p=>p.x)),ly=Math.min(...clean.map(p=>p.y)),hy=Math.max(...clean.map(p=>p.y));
  const sx=hx-lx,sy=hy-ly;if(sx<w*.28||sy<h*.26){result.message='ถาดอยู่ไกลเกินไป หรือมาร์กไม่ครบ';return result}
@@ -969,11 +969,11 @@ function v17InspectFrame(data,w,h){
   if(opt){pairs.push({...ref,x:opt.c.x,y:opt.c.y,weight:['TL','TR','BR','BL'].includes(ref.id)?3:1});used2.add(opt.i)}
  }
  result.markers=pairs.length;
- if(pairs.length<16){result.message=`พบมาร์ก ${pairs.length}/26 จุด · จัดแผ่นให้อยู่ในภาพครบ`;return result}
+ if(pairs.length<14){result.message='จัด Template ให้อยู่ในภาพครบทุกด้าน';return result}
  let H=v17FiducialFit(pairs,w,h)||seed;
  let error=Math.sqrt(pairs.reduce((sum,p)=>{const q=v17Project(H,p.u,p.v,w,h);return sum+(q.x-p.x)**2+(q.y-p.y)**2},0)/pairs.length);
  result.rms=error;
- if(error>Math.max(6,Math.min(w,h)*.016)){
+ if(error>Math.max(7,Math.min(w,h)*.022)){
   result.message='มาร์กที่ตรวจพบไม่สอดคล้องกับรูปแบบกระดาษ';return result;
  }
  const quad=[[0,0],[1,0],[1,1],[0,1]].map(([u,v])=>v17Project(H,u,v,w,h));result.quad=quad;
@@ -988,19 +988,13 @@ function v17InspectFrame(data,w,h){
  result.perspective=perspective;result.rotation=rollDeg;result.sideTilt=sideDeg;
  const minX=Math.min(...quad.map(p=>p.x)),maxX=Math.max(...quad.map(p=>p.x));
  const minY=Math.min(...quad.map(p=>p.y)),maxY=Math.max(...quad.map(p=>p.y));
- if(minX<w*.018||maxX>w*.982||minY<h*.018||maxY>h*.982){result.message='ถอยกล้องหรือจัดแผ่นให้ครบทั้ง 4 ด้าน';result.reason='framing';return result}
- if((maxX-minX)<w*.44||(maxY-minY)<h*.43){result.message='ขยับกล้องเข้าใกล้ เพื่อให้หลุมมีขนาดพออ่านสี';result.reason='distance';return result}
- if(Math.abs(rollDeg)>8){result.message=rollDeg>0?'หมุนโทรศัพท์ทวนเข็มนาฬิกาเล็กน้อย':'หมุนโทรศัพท์ตามเข็มนาฬิกาเล็กน้อย';result.reason='roll';return result}
- if(Math.abs(sideDeg)>10){result.message='ปรับการเอียงซ้าย–ขวาของกล้องให้ขนานกับกระดาษ';result.reason='side';return result}
- if(perspective>.11){result.message='ปรับมุมก้ม–เงยให้กล้องเกือบตั้งฉากกับกระดาษ';result.reason='perspective';return result}
- if(focus<18){result.message='ภาพเบลอ · จับโทรศัพท์ให้นิ่งหรือปรับระยะโฟกัส';result.reason='focus';return result}
+ if(minX<w*.010||maxX>w*.990||minY<h*.010||maxY>h*.990){result.message='ถอยกล้องหรือจัดแผ่นให้ครบทั้ง 4 ด้าน';result.reason='framing';return result}
+ if((maxX-minX)<w*.38||(maxY-minY)<h*.36){result.message='ขยับกล้องเข้าใกล้ เพื่อให้หลุมมีขนาดพออ่านสี';result.reason='distance';return result}
+ if(Math.abs(rollDeg)>18){result.message=rollDeg>0?'หมุนโทรศัพท์ทวนเข็มนาฬิกาเล็กน้อย':'หมุนโทรศัพท์ตามเข็มนาฬิกาเล็กน้อย';result.reason='roll';return result}
+ if(Math.abs(sideDeg)>18){result.message='ปรับการเอียงซ้าย–ขวาของกล้องให้ขนานกับกระดาษ';result.reason='side';return result}
+ if(perspective>.24){result.message='ปรับมุมก้ม–เงยให้กล้องเกือบตั้งฉากกับกระดาษ';result.reason='perspective';return result}
+ if(focus<12){result.message='ภาพเบลอ · จับโทรศัพท์ให้นิ่งหรือปรับระยะโฟกัส';result.reason='focus';return result}
  result.ok=true;result.message='กล้องอยู่ในมุมที่เหมาะสม · รักษาระยะและถือให้นิ่ง';result.reason='ok';return result;
-}
-function v17SetCameraMetrics(result){
- $('v17MarkerCount').textContent=result.markers+'/26';
- $('v17Perspective').textContent=result.perspective===null?'—':(result.perspective*100).toFixed(1)+'%';
- $('v17Rotation').textContent=result.rotation===null?'—':result.rotation.toFixed(1)+'°';
- $('v17Sharpness').textContent=Math.max(0,Math.round(result.focus)).toString();
 }
 function v17CameraLoop(time){
  if(!v16Stream||v17CurrentPage!==2){v17FrameRequest=0;return}
@@ -1014,8 +1008,7 @@ function v17CameraLoop(time){
    const data=v17LiveCtx.getImageData(0,0,W,H).data;
    try{v17LastInspection=v17InspectFrame(data,W,H)}catch(err){v17LastInspection={ok:false,message:'ไม่สามารถประเมินมาร์กได้',markers:0,focus:0,perspective:null,rotation:null,quad:null}}
    v17ConsecutiveGood=v17LastInspection.ok?v17ConsecutiveGood+1:0;
-   v17CameraReady=v17ConsecutiveGood>=3;
-   v17SetCameraMetrics(v17LastInspection);
+   v17CameraReady=v17ConsecutiveGood>=2;
    const detail=v17CameraReady?'พร้อมถ่ายภาพ · ตรวจพบมาร์กและมุมกล้องผ่านเกณฑ์':v17LastInspection.ok?'ภาพผ่านเกณฑ์ · ถือกล้องให้นิ่งอีกเล็กน้อย':v17LastInspection.message;
    if(detail!==v17LastCaptureStatus){v17CaptureUI(detail,v17CameraReady);v17LastCaptureStatus=detail}
   }
@@ -1186,7 +1179,7 @@ v16Step(0);v16Ready();
 window.AlumChromV17={inspectFrame:v17InspectFrame,levels:LEVELS.slice(),getStage:()=>v17CurrentPage};
 
 
-// v1.9: tool-rail actions and separate full-table report screen.
+// v1.10: tool-rail actions and separate full-table report screen.
 $('v18ToTable').addEventListener('click',()=>{
  if(!v16ResultsShown || !analysis){toast('กรุณาอ่านผลก่อนดูตารางสรุป');return;}
  v16Step(5);
@@ -1204,7 +1197,7 @@ $('v18DownloadCorrected').addEventListener('click',()=>{
 window.AlumChromV18={getStage:()=>v17CurrentPage, levels:LEVELS.slice(),version:'1.8'};
 
 
-// v1.9 — Orientation by exterior text signature; fiducials alone are 180-degree symmetric.
+// v1.10 — Orientation by exterior text signature; fiducials alone are 180-degree symmetric.
 let v19DetectionValid=false,v19OrientationLabel='',v19FreeLayout=null,v19DetectedWells=0;
 const v19Canvas=$('v19ZoomCanvas'),v19Cx=v19Canvas.getContext('2d');
 let v19IsOpen=false,v19Selected='S1',v19Zoom=1,v19ViewX=0,v19ViewY=0,v19Fit=1,v19Gesture=null;
