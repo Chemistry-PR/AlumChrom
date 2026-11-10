@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#292057">
-<title>AlumChrom Plate Scanner v1.10 · Capture • Align • Analyze</title>
+<title>AlumChrom Plate Scanner v1.11 · Capture • Align • Analyze</title>
 <style>
 :root{--bg:#f7f7fb;--panel:#fff;--ink:#261d43;--muted:#716b82;--border:#e6e3ef;--violet:#5636ac;--violet2:#3d268e;--shadow:0 10px 28px rgba(34,22,85,.07);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
 *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg)}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}input[type=file]{display:none}[hidden]{display:none!important}
@@ -135,6 +135,13 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 .v19EditorActions .btn{font-size:12px;min-height:41px}
 @media(max-width:880px){.v19EditLayout{grid-template-columns:1fr;overflow-y:auto}.v19WellSidebar{border-left:0;border-top:1px solid #e2e8f3;max-height:230px;overflow:auto}.v19WellButtons{grid-template-columns:repeat(10,1fr)}.v19EditorActions{flex-direction:row;flex-wrap:wrap}.v19EditorActions .btn{flex:1}.v19ZoomViewport canvas{max-height:47dvh}}
 @media(max-width:580px){.v19Dialog{max-height:calc(100dvh - 12px)}.v19Modal{padding:6px}.v19EditorHeader{padding:11px}.v19EditorHeader h2{font-size:16px}.v19EditorHeader p{font-size:10px}.v19ZoomToolbar{gap:5px}.v19HelpHint{width:100%;font-size:10px;margin:0}.v19ZoomViewport canvas{max-height:46dvh}.v19WellButtons{grid-template-columns:repeat(6,1fr)}.v19WellSidebar{max-height:none;overflow:visible}.v19UnderImage{align-items:stretch}.v19UnderImage button{flex:1}.v19UnderImage p{flex-basis:100%;text-align:left}.v19WelcomeActions{flex-direction:column}.v19WelcomeActions .btn{width:100%;max-width:350px}}
+
+/* v1.11 — guided 4-corner capture / manual image rotation */
+.v11ImageControls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.v11ImageControls .btn{min-width:155px;min-height:44px;padding:11px 16px}
+.v11RotateUpload{border-color:#b9ddec!important;background:#eefaff!important;color:#235d88!important}
+.v17CameraBox #v17LiveCanvas{image-rendering:auto}
+@media(max-width:640px){.v11ImageControls{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.v11ImageControls .btn{min-width:0;width:100%}.v11ImageControls:has(.v11RotateUpload[hidden]){grid-template-columns:1fr}}
 </style>
 
 </head>
@@ -147,7 +154,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <ellipse cx="32" cy="32" fill="none" rx="26.5" ry="11.5" stroke="#FA79AA" stroke-width="3.3" transform="rotate(33 32 32)"></ellipse>
 <ellipse cx="32" cy="32" fill="none" rx="26.5" ry="11.5" stroke="#B28DED" stroke-width="3.1" transform="rotate(90 32 32)"></ellipse>
 <circle cx="10.4" cy="19.2" fill="#4EC9EF" r="4.2"></circle><circle cx="50.5" cy="42.0" fill="#F276AC" r="4.1"></circle>
-</svg></div><div><div class="kicker">THAMAI PHUN SAWAT RAT NUKUL SCHOOL · CHEMISTRY PROJECT</div><div class="brandName">ALUMCHROM <span class="v17Version">PLATE SCANNER v1.10</span></div></div></div>
+</svg></div><div><div class="kicker">THAMAI PHUN SAWAT RAT NUKUL SCHOOL · CHEMISTRY PROJECT</div><div class="brandName">ALUMCHROM <span class="v17Version">PLATE SCANNER v1.11</span></div></div></div>
 </div></header>
 <main class="main v17Main">
 <section class="v17Welcome panel v18Welcome" id="v17Welcome"><div class="v17WelcomeArt"><span class="v17Orb"><svg aria-label="AlumChrom atom icon" class="v18Atom" height="44" role="img" viewbox="0 0 64 64" width="44" xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +168,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <div class="over">ALUMCHROM LAB · PLATE SCANNER</div><h1>การวิเคราะห์สี<br/>แม่นยำขึ้นในภาพเดียว</h1>
 <p>ตรวจวิเคราะห์ความเข้มข้นอะลูมิเนียม (III) ด้วยอินดิเคเตอร์ธรรมชาติ จากมาตรฐาน S1–S6 และตัวอย่าง 8 ชุด ชุดละ 3 หลุม</p>
 <div class="v19WelcomeActions"><button class="btn primary big v17StartButton" id="v17Start" type="button">เริ่มใช้งานโปรแกรม <span>→</span></button><button class="btn v19TemplateButton" id="templateBtn" type="button">↓ ดาวน์โหลด Template (PDF)</button></div>
-<p class="scanTip">รองรับกล้องพร้อมตรวจแนวกระดาษ · ปรับตำแหน่งหลุม · ปรับแสงอัตโนมัติ · อ่านผล Blue Signal</p>
+<p class="scanTip">จัด 4 มาร์กมุมก่อนถ่าย · แก้ตำแหน่งหลุม · ปรับแสงอัตโนมัติ · อ่าน Blue Signal</p>
 </section>
 <section hidden="" id="v17App">
 <div class="v17TopBar"><button class="btn" id="v17HomeBtn" type="button">⌂ หน้าหลัก</button><span class="v17TopLabel">ALUMCHROM · ขั้นตอนการวิเคราะห์</span></div>
@@ -175,15 +182,15 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <div class="panel"><div class="panelInner">
 <div class="over">STEP 01 / 05</div><h2 class="sectionTitle">เลือกโหมดการทำงาน</h2><p class="subtitle">ทุกโหมดต้องเห็นหลุมสารมาตรฐาน S1–S6 ในภาพเดียวกับหลุมตัวอย่าง</p>
 <div class="modeGrid">
-<button class="modeCard" data-mode="template" type="button"><span class="modeIcon">▦</span><span><span class="modeNum">MODE 01</span><strong>กล้อง + Template</strong><small>ตรวจมาร์กดำและความเอียงของกล้องแบบสด พร้อมปลดล็อกการถ่ายเมื่อภาพผ่านเกณฑ์</small></span></button>
+<button class="modeCard" data-mode="template" type="button"><span class="modeIcon">▦</span><span><span class="modeNum">MODE 01</span><strong>กล้อง + Template</strong><small>จัดมาร์กดำมุมทั้ง 4 ให้เข้ากรอบเป้าหมายบนกล้อง จึงปลดล็อกการถ่าย</small></span></button>
 <button class="modeCard" data-mode="plain" type="button"><span class="modeIcon">◎</span><span><span class="modeNum">MODE 02</span><strong>กล้องไม่ใช้ Template</strong><small>แนะนำมุมกล้องแต่ไม่ล็อกปุ่มถ่าย · โปรแกรมตรวจวงหลุมอัตโนมัติ ถ้าตรวจไม่ผ่านให้ถ่ายใหม่</small></span></button>
-<button class="modeCard" data-mode="upload" type="button"><span class="modeIcon">↥</span><span><span class="modeNum">MODE 03</span><strong>อัปโหลดภาพ</strong><small>ตรวจ Template และหมุนภาพให้อยู่ด้านถูกต้องอัตโนมัติ · หากไม่มี Template จะลองตรวจวงหลุม</small></span></button>
+<button class="modeCard" data-mode="upload" type="button"><span class="modeIcon">↥</span><span><span class="modeNum">MODE 03</span><strong>อัปโหลดภาพ</strong><small>อัปโหลดภาพและหมุน 90° ได้ด้วยตนเอง · หากพบ Template โปรแกรมจะตรวจหลุมอัตโนมัติ</small></span></button>
 </div>
 <div class="v17Actions"><span class="v17HelpText" id="v17ModeHelp">กรุณาเลือกหนึ่งโหมด</span><button class="btn primary big" disabled="" id="v17ModeNext" type="button">ถัดไป →</button></div>
 </div></div>
 </section>
 <section class="v17Page" hidden="" id="v17Page2">
-<div class="panel"><div class="panelInner"><div class="over">STEP 02 / 05</div><h2 class="sectionTitle" id="v17CaptureTitle">ถ่ายภาพหรืออัปโหลด</h2><p class="subtitle" id="v16CameraInstruction">ให้เห็นมาตรฐาน S1–S6 และตัวอย่าง A1–D6 ทั้งหมดในภาพเดียว</p>
+<div class="panel"><div class="panelInner"><div class="over">STEP 02 / 05</div><h2 class="sectionTitle" id="v17CaptureTitle">ถ่ายภาพหรืออัปโหลด</h2><p class="subtitle" id="v16CameraInstruction">ให้เห็นมาตรฐาน S1–S6 และตัวอย่าง A1–D6 ทั้งหมดในภาพเดียว และจัดทิศทาง S–D ซ้าย / 1–6 ล่าง</p>
 <div id="v16CameraPanel"><div class="cameraBox v17CameraBox is-pending" id="v16CameraBox">
 <video autoplay="" id="v16Video" muted="" playsinline=""></video><canvas aria-label="ภาพกล้องสดพร้อมกรอบตรวจมาร์ก" height="520" id="v17LiveCanvas" width="850"></canvas>
 <div class="v17CameraBadge" id="v17CameraBadge">● กำลังตรวจแนวกล้อง</div>
@@ -203,11 +210,11 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <p class="subtitle">ตรวจวงอ่านสี 30 หลุม และเลื่อนเฉพาะหลุมที่คลาดเคลื่อนก่อนอ่านผล</p>
 <div class="status" id="statusBox">รอภาพ</div>
 <div class="canvasWrap"><div class="canvasStage"><canvas height="700" id="plateCanvas" width="900"></canvas></div><div class="canvasInfo"><span id="canvasCaption">—</span><span id="markerCaption">—</span></div><div class="manualBox" id="manualBox"><span id="manualInstructions">เลือกจุดตามคำแนะนำ</span></div></div>
-<div class="v19UnderImage"><button class="btn v19CaptureAgain" id="v16NewImage" type="button">↻ ถ่ายใหม่</button><p id="v19OrientationHint">ตรวจตำแหน่งหลุมจากภาพอัตโนมัติ</p></div>
+<div class="v19UnderImage"><div class="v11ImageControls"><button class="btn v19CaptureAgain" id="v16NewImage" type="button">↻ ถ่ายใหม่</button><button class="btn v11RotateUpload" id="v11RotateUpload" type="button" hidden>⟳ หมุนภาพ 90°</button></div><p id="v19OrientationHint">ตรวจตำแหน่งหลุมจากภาพอัตโนมัติ</p></div>
 
 
 
-</div></section><aside class="panel v18ToolsPanel v19ToolsPanel"><div class="panelInner"><div class="over">WORKSPACE TOOLS · STEP 03/05</div><h2 class="sectionTitle">ตรวจและปรับตำแหน่ง</h2><p class="subtitle">ระบบจะหมุนภาพที่มี Template ให้ถูกด้าน และวางวงหลุมให้อัตโนมัติ</p>
+</div></section><aside class="panel v18ToolsPanel v19ToolsPanel"><div class="panelInner"><div class="over">WORKSPACE TOOLS · STEP 03/05</div><h2 class="sectionTitle">ตรวจและปรับตำแหน่ง</h2><p class="subtitle">ผู้ใช้จัดทิศทางภาพเอง · เมื่ออยู่ในแนว S–D ซ้าย และ 1–6 ล่าง ระบบจะตรวจหลุมอัตโนมัติ</p>
 <div class="v19State"><span class="v19StateIcon">◎</span><div><strong id="v19DetectTitle">รอตรวจตำแหน่ง</strong><small id="v19DetectInfo">หลังถ่ายรูป ระบบจะตรวจหลุมก่อนเข้าสู่ขั้นตอนนี้</small></div></div>
 <div class="v19OnlyTool"><h3 class="toolHeading">แก้ไขตำแหน่งรายหลุม</h3><button class="btn primary big" id="fineTuneBtn" type="button">⌕ ซูมและแก้ไขหลุม</button><p class="scanTip">ซูม / เลื่อนภาพ แล้วเลือกหลุม S1–D6 ที่ต้องการแก้ได้อย่างอิสระ</p></div>
 <div class="hint v18ReadyHint" id="v16ReadyMessage">ระบบกำลังตรวจตำแหน่งหลุม</div></div>
@@ -241,7 +248,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <p class="help">ผลจากการเทียบสีเป็นการคัดกรองเชิงภาพเท่านั้น ค่าโซน 0 หมายถึงไม่พบ Blue Signal เพิ่มจาก blank ตามเกณฑ์ ไม่ใช่การยืนยันว่าไม่มี Al³⁺</p>
 </div></section></section>
 </section>
-<p class="v17Footnote">AlumChrom Plate Scanner v1.10 · Camera Alignment สำหรับโหมด Template · PDF Master Template 1.6</p>
+<p class="v17Footnote">AlumChrom Plate Scanner v1.11 · 4-Corner Capture สำหรับโหมด Template · PDF Master Template 1.6</p>
 </main>
 <div class="v19Modal" id="v19Modal" hidden role="dialog" aria-modal="true" aria-labelledby="v19EditorTitle">
 <div class="v19Dialog"><div class="v19EditorHeader"><div><div class="over">WELL POSITION EDITOR</div><h2 id="v19EditorTitle">ซูมและแก้ไขตำแหน่งหลุม</h2><p>เลื่อนภาพได้อิสระ · ลากวงหลุมให้ตรง · เลือกหลุมจากรายชื่อด้านขวา</p></div><button type="button" class="btn" id="v19EditorDoneTop">เสร็จสิ้น ✓</button></div>
@@ -486,7 +493,7 @@ function exportCSV(){
 }
 function reportText(){
  if(!analysis)return 'ยังไม่มีผลการวิเคราะห์';
- let txt=`AlumChrom Plate Scanner v1.10 · Capture • Align • Analyze · Blue Signal\nภาพ: ${imageName}\nมาตรฐานในภาพ: ${LEVELS.join(', ')} mg/L\nหลักการ: Blue Signal = b*มาตรฐาน0 − b*ตัวอย่าง\n`;
+ let txt=`AlumChrom Plate Scanner v1.11 · Capture • Align • Analyze · Blue Signal\nภาพ: ${imageName}\nมาตรฐานในภาพ: ${LEVELS.join(', ')} mg/L\nหลักการ: Blue Signal = b*มาตรฐาน0 − b*ตัวอย่าง\n`;
  analysis.sampleResults.forEach(r=>{txt+=`\nตัวอย่าง ${r.sample}: ${formatResult(r.estimation)} · Blue Signal ${r.estimation?r.estimation.blueSignal.toFixed(2):'—'} b* · อ่านได้ ${r.filledCount}/3 ${r.estimation?.warning||''}`});
  return txt+'\n\nหมายเหตุ: โซน 0 ไม่ใช่หลักฐานยืนยันว่าอะลูมิเนียมไม่มีอยู่จริง ต้องตรวจสอบกับ blank มาตรฐานและ LOD'
 }
@@ -900,7 +907,7 @@ function v17SelectMode(mode){
  v16Mode=mode;v16HasChosenMode=true;
  document.querySelectorAll('.modeCard').forEach(el=>{const on=el.dataset.mode===mode;el.classList.toggle('selected',on);el.setAttribute('aria-pressed',String(on))});
  $('v17ModeNext').disabled=false;
- const texts={template:'โหมด 1: ปลดล็อกการถ่ายเมื่อพบมาร์กและแนวกล้องผ่านเกณฑ์',plain:'โหมด 2: มีคำแนะนำแนวกล้อง แต่ปุ่มถ่ายไม่ถูกล็อก',upload:'โหมด 3: เลือกภาพถ่ายที่มีมาตรฐาน S1–S6 ครบ'};
+ const texts={template:'โหมด 1: จัดมาร์กดำทั้ง 4 มุมให้ตรงกรอบเป้าหมายก่อนถ่าย',plain:'โหมด 2: มีคำแนะนำแนวกล้อง แต่ปุ่มถ่ายไม่ถูกล็อก',upload:'โหมด 3: เลือกภาพถ่ายที่มีมาตรฐาน S1–S6 ครบ'};
  $('v17ModeHelp').textContent=texts[mode];
 }
 function v17ResetCapture(){v17ConsecutiveGood=0;v17CameraReady=false;v17LastInspection=null;$('v16Shoot').disabled=v16Mode==='template';}
@@ -996,6 +1003,83 @@ function v17InspectFrame(data,w,h){
  if(focus<12){result.message='ภาพเบลอ · จับโทรศัพท์ให้นิ่งหรือปรับระยะโฟกัส';result.reason='focus';return result}
  result.ok=true;result.message='กล้องอยู่ในมุมที่เหมาะสม · รักษาระยะและถือให้นิ่ง';result.reason='ok';return result;
 }
+// Four permanent target boxes on the video preview. They are deliberately
+// independent of the detected fiducials: the user moves the camera, not the boxes.
+function v11TargetGeometry(w,h){
+ const ratio=1.20; // relative spacing of the four master-template corner fiducials
+ const spanY=Math.min(h*.76,w*.73/ratio);
+ const spanX=spanY*ratio;
+ const half=Math.max(18,Math.min(44,Math.min(w,h)*.062));
+ const cx=w/2,cy=h/2;
+ const centers=[{x:cx-spanX/2,y:cy-spanY/2},{x:cx+spanX/2,y:cy-spanY/2},{x:cx+spanX/2,y:cy+spanY/2},{x:cx-spanX/2,y:cy+spanY/2}];
+ return {centers,half,spanX,spanY};
+}
+function v11FindCornerPoints(data,w,h){
+ const all=findMarkerCandidates(data,w,h);
+ if(all.length<4)return null;
+ // Corners are the four larger square marks, never the smaller column/row ticks.
+ const candidate=v19FindCornerMarkers(all,w,h);
+ if(candidate)return candidate;
+ // Fallback for low-resolution previews: use the four most salient square marks.
+ const square=all.filter(p=>p.width/p.height>.7&&p.width/p.height<1.42);
+ if(square.length<4)return null;
+ const largest=square.slice(0,4).sort((a,b)=>a.y-b.y);
+ const top=largest.slice(0,2).sort((a,b)=>a.x-b.x),bot=largest.slice(2).sort((a,b)=>a.x-b.x);
+ const quad=[top[0],top[1],bot[1],bot[0]];
+ const dx=Math.max(...quad.map(p=>p.x))-Math.min(...quad.map(p=>p.x));
+ const dy=Math.max(...quad.map(p=>p.y))-Math.min(...quad.map(p=>p.y));
+ return dx>=w*.23&&dy>=h*.2?quad:null;
+}
+function v11InspectCapture(data,w,h){
+ const targets=v11TargetGeometry(w,h);
+ const markers=v11FindCornerPoints(data,w,h);
+ const inside=[false,false,false,false];
+ if(markers){
+  for(let i=0;i<4;i++){
+   const p=markers[i],t=targets.centers[i];
+   // Keep most of the fiducial square within its target; small deviations allowed.
+   const margin=Math.min(p.width||0,p.height||0)*.13;
+   inside[i]=Math.abs(p.x-t.x)<=targets.half-margin&&Math.abs(p.y-t.y)<=targets.half-margin;
+  }
+ }
+ const count=inside.filter(Boolean).length;
+ const focus=count===4?v17FocusScore(data,w,h):null;
+ const focusOK=count===4&&focus>=12;
+ const ok=count===4&&focusOK;
+ const message=ok?'มาร์กดำทั้ง 4 มุมอยู่ในกรอบ · พร้อมถ่ายภาพ':count===4?'จัดกล้องให้นิ่งเพื่อให้ภาพคมชัด':markers?'จัดจุดดำให้เข้ากรอบทั้ง 4 มุม ('+count+'/4)':'เลื่อนกล้องให้เห็นจุดดำมุมทั้ง 4 และจัดให้ตรงกรอบ';
+ return {ok,count,inside,markers,targets,focus,message};
+}
+function v11DrawCaptureTargets(g,w,h,result){
+ const {centers,half}=result?.targets||v11TargetGeometry(w,h);
+ const passing=!!(result?.ok&&v17CameraReady);
+ g.save();
+ g.lineWidth=Math.max(2,Math.min(w,h)*.005);
+ const labels=['1','2','3','4'];
+ centers.forEach((p,i)=>{
+  const yes=!!result?.inside?.[i],green=yes?'#40EB9B':'#FF7078';
+  g.fillStyle=yes?'rgba(25,172,107,.16)':'rgba(175,35,61,.11)';
+  g.strokeStyle=green;
+  const x=p.x-half,y=p.y-half;
+  g.beginPath();g.roundRect(x,y,half*2,half*2,Math.max(5,half*.14));g.fill();g.stroke();
+  const inset=Math.max(5,half*.19);
+  g.strokeStyle='rgba(255,255,255,.9)';g.lineWidth=1.1;
+  g.strokeRect(x+inset,y+inset,2*(half-inset),2*(half-inset));
+  g.fillStyle=green;
+  g.beginPath();g.arc(x+half*2-5,y-4,Math.max(6,half*.15),0,Math.PI*2);g.fill();
+  g.fillStyle='#fff';g.font=`700 ${Math.max(9,half*.29)}px system-ui`;g.textAlign='center';g.textBaseline='middle';
+  g.fillText(yes?'✓':labels[i],x+half*2-5,y-4);
+ });
+ g.lineWidth=1.8;g.strokeStyle=passing?'rgba(67,237,158,.55)':'rgba(255,255,255,.35)';
+ g.setLineDash([7,6]);g.beginPath();g.moveTo(centers[0].x,centers[0].y);
+ for(const i of [1,2,3])g.lineTo(centers[i].x,centers[i].y);
+ g.closePath();g.stroke();g.setLineDash([]);
+ g.fillStyle='rgba(12,14,25,.77)';
+ const labelWidth=Math.min(w*.93,380),lH=26;
+ g.fillRect((w-labelWidth)/2,Math.max(9,centers[0].y-half-47),labelWidth,lH);
+ g.font=`600 ${Math.max(11,Math.min(w,h)*.025)}px system-ui`;g.fillStyle='#FFFFFF';g.textAlign='center';g.textBaseline='middle';
+ g.fillText('S–D ทางซ้าย   •   1–6 ด้านล่าง',w/2,Math.max(9,centers[0].y-half-47)+lH/2);
+ g.restore();
+}
 function v17CameraLoop(time){
  if(!v16Stream||v17CurrentPage!==2){v17FrameRequest=0;return}
  const video=$('v16Video');
@@ -1003,23 +1087,19 @@ function v17CameraLoop(time){
   const W=Math.min(900,video.videoWidth),H=Math.round(video.videoHeight*W/video.videoWidth);
   if(v17Live.width!==W||v17Live.height!==H){v17Live.width=W;v17Live.height=H;}
   v17LiveCtx.drawImage(video,0,0,W,H);
-  if(v16Mode==='template'&&(time-v17LastCheck>260)){
-   v17LastCheck=time;
-   const data=v17LiveCtx.getImageData(0,0,W,H).data;
-   try{v17LastInspection=v17InspectFrame(data,W,H)}catch(err){v17LastInspection={ok:false,message:'ไม่สามารถประเมินมาร์กได้',markers:0,focus:0,perspective:null,rotation:null,quad:null}}
-   v17ConsecutiveGood=v17LastInspection.ok?v17ConsecutiveGood+1:0;
-   v17CameraReady=v17ConsecutiveGood>=2;
-   const detail=v17CameraReady?'พร้อมถ่ายภาพ · ตรวจพบมาร์กและมุมกล้องผ่านเกณฑ์':v17LastInspection.ok?'ภาพผ่านเกณฑ์ · ถือกล้องให้นิ่งอีกเล็กน้อย':v17LastInspection.message;
-   if(detail!==v17LastCaptureStatus){v17CaptureUI(detail,v17CameraReady);v17LastCaptureStatus=detail}
-  }
-  if(v16Mode==='plain'&&!v17CameraReady){v17CameraReady=true;v17CaptureUI('โหมด 2: ควรถือกล้องให้เกือบตั้งฉากกับถาด แต่สามารถถ่ายภาพได้',true)}
-  const r=v17LastInspection;
-  if(v16Mode==='template'&&r?.quad){
-   v17LiveCtx.save();v17LiveCtx.strokeStyle=v17CameraReady?'#30d889':'#f26b75';v17LiveCtx.lineWidth=3.5;v17LiveCtx.beginPath();
-   r.quad.forEach((p,i)=>i?v17LiveCtx.lineTo(p.x,p.y):v17LiveCtx.moveTo(p.x,p.y));v17LiveCtx.closePath();v17LiveCtx.stroke();
-   r.quad.forEach(p=>{v17LiveCtx.fillStyle=v17CameraReady?'#30d889':'#f26b75';v17LiveCtx.fillRect(p.x-4,p.y-4,8,8)});
-   v17LiveCtx.restore();
-  }
+  if(v16Mode==='template'){
+   if(time-v17LastCheck>220){
+    v17LastCheck=time;
+    const pixels=v17LiveCtx.getImageData(0,0,W,H).data;
+    try{v17LastInspection=v11InspectCapture(pixels,W,H)}
+    catch(err){v17LastInspection={ok:false,count:0,inside:[false,false,false,false],targets:v11TargetGeometry(W,H),message:'กำลังค้นหามาร์กมุมหลัก'}}
+    v17ConsecutiveGood=v17LastInspection.ok?v17ConsecutiveGood+1:0;
+    v17CameraReady=v17ConsecutiveGood>=2;
+    const detail=v17CameraReady?'พร้อมถ่ายภาพ · มาร์กเข้ากรอบครบ 4 มุม':v17LastInspection.ok?'มาร์กครบ 4 จุด · ถือกล้องให้นิ่งอีกเล็กน้อย':v17LastInspection.message;
+    if(detail!==v17LastCaptureStatus){v17CaptureUI(detail,v17CameraReady);v17LastCaptureStatus=detail}
+   }
+   v11DrawCaptureTargets(v17LiveCtx,W,H,v17LastInspection);
+  }else if(!v17CameraReady){v17CameraReady=true;v17CaptureUI('โหมด 2: จัดกล้องให้อยู่ในแนวตรงก่อนถ่ายได้เลย',true)}
  }
  v17FrameRequest=requestAnimationFrame(v17CameraLoop);
 }
@@ -1043,7 +1123,7 @@ async function v16OpenCamera(){
   v16Stream=stream;const video=$('v16Video');video.srcObject=stream;await video.play();
   v17LastCheck=0;v17ResetCapture();v17LastCaptureStatus='';
   v17FrameRequest=requestAnimationFrame(v17CameraLoop);
-  v17CaptureUI(v16Mode==='template'?'ตรวจมาร์กและมุมกล้องแบบสด · วาง Template ให้อยู่ในกรอบ':'จัดถาดให้อยู่กลางภาพ · สามารถถ่ายได้แม้มุมไม่ตรงสมบูรณ์',v16Mode==='plain');
+  v17CaptureUI(v16Mode==='template'?'จัดจุดดำทั้ง 4 มุมให้เข้ากรอบบนจอ จึงจะถ่ายได้':'จัดถาดให้อยู่กลางภาพ · สามารถถ่ายได้แม้มุมไม่ตรงสมบูรณ์',v16Mode==='plain');
  }catch(err){$('v16CameraBox').hidden=true;$('v16CameraMessage').textContent='เปิดกล้องสดไม่สำเร็จ ('+(err.name||'ไม่สามารถเข้าถึง')+') · ลองเปิดผ่าน HTTPS หรือใช้โหมดอัปโหลด';}
  finally{v17CameraOpening=false}
 }
@@ -1056,7 +1136,7 @@ function v17CaptureNext(){
   $('v16CameraInstruction').textContent='เลือกภาพที่มีมาตรฐาน S1–S6 และตัวอย่างครบทุกหลุม';
  }else{
   $('v17CaptureTitle').textContent='ถ่ายภาพถาดทดลอง';
-  $('v16CameraInstruction').textContent=v16Mode==='template'?'วาง Template 1.6 ให้ครบ 4 มุม · ปุ่มถ่ายจะพร้อมเมื่อแนวกล้องผ่านเกณฑ์':'พยายามถือกล้องตั้งฉากกับถาด · ปุ่มถ่ายจะไม่ถูกล็อก';
+  $('v16CameraInstruction').textContent=v16Mode==='template'?'หัน S–D ไปทางซ้าย และ 1–6 ไว้ด้านล่าง · จัดจุดดำ 4 มุมให้เข้ากรอบ':'พยายามถือกล้องตั้งฉากกับถาด · ปุ่มถ่ายจะไม่ถูกล็อก';
   v16OpenCamera();
  }
 }
@@ -1068,8 +1148,8 @@ function v16TakePhoto(){
   // Check the actual capture moment, not only the last preview frame.
   const w=Math.min(850,video.videoWidth),h=Math.max(1,Math.round(w*video.videoHeight/video.videoWidth));
   const check=document.createElement('canvas');check.width=w;check.height=h;const xc=check.getContext('2d',{willReadFrequently:true});xc.drawImage(video,0,0,w,h);
-  const now=v17InspectFrame(xc.getImageData(0,0,w,h).data,w,h);
-  if(!now.ok){v17ConsecutiveGood=0;v17CameraReady=false;v17CaptureUI(now.message,false);toast('ตำแหน่งกล้องเปลี่ยนไป กรุณาจัดมุมอีกครั้ง');return;}
+  const now=v11InspectCapture(xc.getImageData(0,0,w,h).data,w,h);
+  if(!now.ok){v17ConsecutiveGood=0;v17CameraReady=false;v17CaptureUI(now.message,false);toast('มาร์กดำทั้ง 4 จุดต้องอยู่ในกรอบก่อนถ่าย');return;}
  }
  const max=2100,scale=Math.min(1,max/Math.max(video.videoWidth,video.videoHeight));
  const c=document.createElement('canvas');c.width=Math.max(1,Math.round(video.videoWidth*scale));c.height=Math.max(1,Math.round(video.videoHeight*scale));
@@ -1362,35 +1442,44 @@ function v19ApplyImageAlignment(){
  if(v16Mode!=='plain'){
   try{detection=v19TemplateOrientation()}catch(err){console.warn('Template orientation:',err)}
  }
- if(detection&&detection.confidence){
-  const turns=detection.turns;
-  if(turns){rotation=turns;renderImageToOff()}
+ if(detection?.confidence){
+  // NOTE: turns indicates what the user *needs* to do; never rotate automatically.
+  if(detection.turns!==0){
+   const action=v16Mode==='upload'?'กด “หมุนภาพ 90°” ข้างปุ่มเปลี่ยนภาพ จน S–D อยู่ซ้าย และ 1–6 อยู่ล่าง':'ถ่ายใหม่โดยหัน S–D ไปทางซ้าย และ 1–6 ไว้ด้านล่าง';
+   v19Status('ภาพยังไม่อยู่ในทิศทางมาตรฐาน',action,true);
+   setStatus('ยังไม่สามารถอ่านผล · กรุณาจัดทิศทางภาพให้ถูกต้อง','warn');
+   return false;
+  }
   autoDetectCorners();
-  if(corners.length===4 && v15MarkerMatches.length>=14){
-   v19DetectionValid=true;v19OrientationLabel=turns?'หมุนภาพอัตโนมัติ '+(turns*90)+'°':'ภาพอยู่ในแนวถูกต้องแล้ว';
-   v19Status('ตรวจ Template สำเร็จ',v19OrientationLabel+' · S–D ทางซ้าย / 1–6 ด้านล่าง · ตรวจมาร์ก '+v15MarkerMatches.length+'/26 จุด');
+  if(corners.length===4&&v15MarkerMatches.length>=12){
+   v19DetectionValid=true;v19OrientationLabel='ภาพอยู่ในแนวถูกต้อง';
+   v19Status('ตรวจ Template สำเร็จ','S–D ทางซ้าย / 1–6 ด้านล่าง · ตรวจมาร์ก '+v15MarkerMatches.length+'/26 จุด');
    return true;
   }
-  corners=[];v15ResetGeometry();
+  corners=[];analysis=null;v15ResetGeometry();
  }
+ // If dark corner markers are visible but orientation is ambiguous, don't
+ // silently treat the template as a markerless plate with the wrong well labels.
  if(v16Mode==='template'||(detection&&!detection.confidence&&v16Mode==='upload'&&detection.margin>0.004)){
-  v19Status('ระบุทิศทาง Template ไม่มั่นใจ','กรุณาให้เห็นมาร์ก อักษร S–D และเลข 1–6 ครบถ้วน แล้ว'+(v16Mode==='upload'?'เปลี่ยนภาพ':'ถ่ายใหม่'),true);
-  setStatus('ไม่สามารถยืนยันทิศทาง Template ได้ · ไม่วิเคราะห์หลุมจากภาพนี้','warn');return false;
+  const action=v16Mode==='upload'?'หมุนภาพด้วยตนเองหรือเปลี่ยนภาพ':'ถ่ายใหม่';
+  v19Status('ยังยืนยันทิศทาง Template ไม่ได้','กรุณาให้เห็นมาร์ก อักษร S–D และเลข 1–6 ชัดเจน แล้ว'+action,true);
+  setStatus('ยังยืนยันตำแหน่งหลุมจาก Template ไม่ได้','warn');return false;
  }
- // Markerless scan: detect the 30 wells, but NEVER guess an unvalidated lattice.
+ // No-template modes use the existing validated 30-well grid detector.
  try{const free=v19DetectWellGrid();if(free&&v19ApplyFreeGrid(free)){
   v19DetectionValid=true;v19DetectedWells=free.successes;
-  v19Status('ตรวจวงหลุมสำเร็จ','ตรวจโครง 5×6 ได้ '+free.successes+'/30 จุด · ภาพไม่มี Template · กรุณาตรวจวงก่อนอ่านผล');
+  v19Status('ตรวจวงหลุมสำเร็จ','ตรวจโครง 5×6 ได้ '+free.successes+'/30 จุด · ตรวจวงก่อนอ่านผล');
   setStatus('ตรวจวงหลุมเบื้องต้นแล้ว · เลื่อนแก้เฉพาะหลุมที่ไม่ตรง','good');return true;
  }}catch(err){console.warn('Circle grid detection:',err)}
  corners=[];analysis=null;v15ResetGeometry();updateOutputs();drawScene();
- v19Status('ตรวจหลุมอัตโนมัติไม่สำเร็จ','กรุณา'+(v16Mode==='upload'?'เปลี่ยนภาพ':'ถ่ายใหม่')+' ให้เห็น 30 หลุมชัดเจนในแนว S, A–D และ 1–6',true);
- setStatus('ไม่พบตำแหน่งหลุมที่เชื่อถือได้ · ยังไม่สามารถอ่านผล','warn');return false;
+ v19Status('ตรวจหลุมอัตโนมัติไม่สำเร็จ','กรุณา'+(v16Mode==='upload'?'หมุนหรือเปลี่ยนภาพ':'ถ่ายใหม่')+' ให้เห็น 30 หลุมชัดเจน',true);
+ setStatus('ยังไม่สามารถอ่านผล · ไม่พบตำแหน่งหลุมที่เชื่อถือได้','warn');return false;
 }
 function v16ImageReady(){
  v16StopCamera();v16InvalidateResults();v16Step(3);
  v19ApplyImageAlignment();v16Ready();drawScene();
  $('v16NewImage').textContent=v16Mode==='upload'?'↥ เปลี่ยนภาพ':'↻ ถ่ายใหม่';
+ $('v11RotateUpload').hidden=v16Mode!=='upload';
 }
 function v16Ready(){
  const positioned=!!originalImage&&corners.length===4&&v19DetectionValid;
@@ -1496,6 +1585,21 @@ window.addEventListener('keydown',e=>{if(e.key==='Escape'&&v19IsOpen)v19CloseEdi
 $('v16NewImage').addEventListener('click',()=>{$('v16NewImage').textContent=v16Mode==='upload'?'↥ เปลี่ยนภาพ':'↻ ถ่ายใหม่'});
 window.AlumChromV19={getStage:()=>v17CurrentPage,orient:v19TemplateOrientation,detectFree:v19DetectWellGrid,getDetection:()=>({valid:v19DetectionValid,mode:v16Mode,orientation:v19OrientationLabel,free:v19DetectedWells}),getEditor:()=>({open:v19IsOpen,selected:v19Selected,zoom:v19Zoom}),version:'1.9'};
 
+
+// v1.11: Upload mode ONLY — rotate clockwise by 90 degrees on explicit click.
+$('v11RotateUpload').addEventListener('click',()=>{
+ if(v16Mode!=='upload'||!originalImage)return;
+ rotateImage();
+ v16InvalidateResults();
+ v19ApplyImageAlignment();
+ v16Ready();drawScene();
+ toast('หมุนภาพ 90° แล้ว · ตรวจสอบตำแหน่งหลุมใหม่');
+});
+window.AlumChromV111={
+ version:'1.11',captureTargets:v11TargetGeometry,inspectCapture:v11InspectCapture,
+ getStage:()=>v17CurrentPage,getMode:()=>v16Mode,
+ getState:()=>({ready:v17CameraReady,orientationRotation:rotation,valid:v19DetectionValid,overlayVisible:v16Mode==='template'&&v17CurrentPage===2})
+};
 </script>
 </body>
 </html>
