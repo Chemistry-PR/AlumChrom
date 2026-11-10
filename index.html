@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#292057">
-<title>AlumChrom Plate Scanner v1.8 · Capture • Align • Analyze</title>
+<title>AlumChrom Plate Scanner v1.9 · Capture • Align • Analyze</title>
 <style>
 :root{--bg:#f7f7fb;--panel:#fff;--ink:#261d43;--muted:#716b82;--border:#e6e3ef;--violet:#5636ac;--violet2:#3d268e;--shadow:0 10px 28px rgba(34,22,85,.07);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
 *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg)}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}input[type=file]{display:none}[hidden]{display:none!important}
@@ -32,7 +32,7 @@
 @media(max-width:720px){.v17StepBar{gap:5px}.v17StepBar .stepChip{font-size:10px;padding:10px 4px}.v17Welcome{margin:16px auto 24px;padding:35px 17px}.v17Page>.panel>.panelInner{padding:17px}.v17CameraMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}.v17CameraMetrics b{font-size:15px}.v17Actions .btn{flex:1}.v17Page .workGrid{grid-template-columns:1fr}.v17Page #v16ResultsPanel .sampleGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 
-/* v1.8 — AlumChrom brand + five-step results experience */
+/* v1.9 — AlumChrom brand + five-step results experience */
 :root {--bg:#F6F9FD;--ink:#24314B;--muted:#65758E;--border:#E3E9F3;--violet:#6553B6;--violet2:#51409B;--pink:#F16AAB;--cyan:#42BEE9;--shadow:0 14px 38px rgba(40,65,105,.065);font-family:'Anuphan','Noto Sans Thai','Segoe UI',Tahoma,sans-serif}
 body,button,input,table{font-family:'Anuphan','Noto Sans Thai','Segoe UI',Tahoma,sans-serif}
 body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(--bg)}
@@ -94,6 +94,47 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 @media(max-width:640px){.v17StepBar{display:flex;overflow-x:auto;flex-wrap:nowrap;padding-bottom:5px;gap:6px}.v17StepBar .stepChip{flex:0 0 auto;min-width:114px;padding:11px 9px;font-size:10.5px}.v17Page #v16ResultsPanel .sampleGrid{grid-template-columns:1fr!important}.v18ResultCards .sampleCard{padding:17px}.v18ResultCards .sampleValue{font-size:23px}.v18ToolsPanel>.panelInner{padding:17px}.v18ToolGroup .toolbar{grid-template-columns:1fr 1fr}.v18ImageActions{grid-template-columns:1fr 1fr}.v18ToolGroup .toolbar .btn,.v18ImageActions .btn{font-size:11.5px}.v18Header .kicker{font-size:9px}.v18Header .brandName{font-size:17px}.v17Version{font-size:11px}.v18TablePage .panelInner{padding:15px}}
 @media(max-width:380px){.v18ToolGroup .toolbar,.v18ImageActions{grid-template-columns:1fr}.v17StepBar .stepChip{min-width:104px}}
 
+
+/* v1.9 - orientation-aware, minimal review and zoomable per-well editor */
+.v19WelcomeActions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:7px}
+.v19WelcomeActions .btn{min-height:59px;padding:15px 25px;font-weight:750;font-size:14px}
+.v19TemplateButton{color:#4c5390;border-color:#cfd8ef;background:#f7fbff}
+.v19ToolsPanel .panelInner{padding:24px}
+.v19State{display:flex;gap:12px;align-items:flex-start;padding:17px 15px;border:1px solid #dceaf4;background:#f3faff;border-radius:14px;margin:16px 0 22px}
+.v19StateIcon{display:grid;place-items:center;border-radius:50%;height:34px;width:34px;flex:none;color:#267dae;background:#d9f0ff;font-size:20px}
+.v19State strong{display:block;font-size:14px;color:#314d72}
+.v19State small{display:block;font-size:12px;line-height:1.7;color:#63738a;margin-top:5px}
+.v19State.warning{background:#fff5ee;border-color:#f2dcc7}
+.v19State.warning .v19StateIcon{background:#ffe0ce;color:#a65b24}
+.v19OnlyTool{padding-bottom:12px}.v19OnlyTool .toolHeading{font-size:14px;margin:0 0 12px;color:#405780}
+.v19OnlyTool #fineTuneBtn{display:block;width:100%;padding:14px 10px}
+.v19UnderImage{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:15px 0 4px}
+.v19UnderImage button{min-width:190px;padding:12px 17px}
+.v19UnderImage p{font-size:12px;color:#6f7d94;line-height:1.7;margin:0;flex:1;text-align:right}
+.v19ToolsPanel .readFooter{padding:16px 24px 18px}
+.v19ToolsPanel .readFooter #v16ReadBtn{min-height:52px;width:100%}
+.v19Modal{position:fixed;inset:0;z-index:900;background:rgba(20,26,50,.76);padding:12px;display:flex;align-items:center;justify-content:center}
+.v19Dialog{background:#fff;border-radius:18px;max-width:1450px;width:100%;max-height:calc(100dvh - 24px);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 75px #12121c69}
+.v19EditorHeader{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 22px;border-bottom:1px solid #e5ecf6}
+.v19EditorHeader h2{margin:4px 0;font-size:21px}.v19EditorHeader p{font-size:12px;color:#66758c;margin:2px 0}
+.v19EditLayout{display:grid;grid-template-columns:minmax(0,1fr) minmax(235px,275px);min-height:0;overflow:hidden;flex:1}
+.v19ZoomPanel{display:flex;flex-direction:column;min-width:0;min-height:0;background:#e8ecf2}
+.v19ZoomToolbar{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid #d5dfed;flex-wrap:wrap;background:#f7f9fe}
+.v19ZoomToolbar .btn{min-height:37px;padding:7px 12px}.v19ZoomToolbar #v19ZoomValue{font-weight:800;color:#394d73;font-size:13px}
+.v19HelpHint{color:#64738a;font-size:11px;margin-left:auto}
+.v19ZoomViewport{overflow:hidden;min-height:260px;flex:1;display:flex;align-items:center;justify-content:center}
+.v19ZoomViewport canvas{display:block;width:100%;height:auto;max-height:min(69dvh,850px);touch-action:none;cursor:grab;background:#e5e9f0}
+.v19ZoomViewport canvas:active{cursor:grabbing}
+.v19WellSidebar{padding:16px 13px;overflow-y:auto;border-left:1px solid #e2e8f3;display:flex;flex-direction:column;gap:8px}
+.v19WellSidebar>strong{font-size:14px;color:#374c73}.v19WellSidebar>p{font-size:11px;color:#64738d;margin:0 0 4px}
+.v19WellButtons{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.v19WellButtons button{border:1px solid #d9e2f1;border-radius:8px;background:#fff;color:#496181;font-size:11px;font-weight:700;min-height:39px;cursor:pointer}
+.v19WellButtons button.is-standard{background:#edfcfa;border-color:#b8e8dc}
+.v19WellButtons button.selected{background:#604db5;color:#fff;border-color:#604db5}
+.v19EditorActions{display:flex;flex-direction:column;gap:7px;margin-top:auto;padding-top:12px}
+.v19EditorActions .btn{font-size:12px;min-height:41px}
+@media(max-width:880px){.v19EditLayout{grid-template-columns:1fr;overflow-y:auto}.v19WellSidebar{border-left:0;border-top:1px solid #e2e8f3;max-height:230px;overflow:auto}.v19WellButtons{grid-template-columns:repeat(10,1fr)}.v19EditorActions{flex-direction:row;flex-wrap:wrap}.v19EditorActions .btn{flex:1}.v19ZoomViewport canvas{max-height:47dvh}}
+@media(max-width:580px){.v19Dialog{max-height:calc(100dvh - 12px)}.v19Modal{padding:6px}.v19EditorHeader{padding:11px}.v19EditorHeader h2{font-size:16px}.v19EditorHeader p{font-size:10px}.v19ZoomToolbar{gap:5px}.v19HelpHint{width:100%;font-size:10px;margin:0}.v19ZoomViewport canvas{max-height:46dvh}.v19WellButtons{grid-template-columns:repeat(6,1fr)}.v19WellSidebar{max-height:none;overflow:visible}.v19UnderImage{align-items:stretch}.v19UnderImage button{flex:1}.v19UnderImage p{flex-basis:100%;text-align:left}.v19WelcomeActions{flex-direction:column}.v19WelcomeActions .btn{width:100%;max-width:350px}}
 </style>
 
 </head>
@@ -106,7 +147,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <ellipse cx="32" cy="32" fill="none" rx="26.5" ry="11.5" stroke="#FA79AA" stroke-width="3.3" transform="rotate(33 32 32)"></ellipse>
 <ellipse cx="32" cy="32" fill="none" rx="26.5" ry="11.5" stroke="#B28DED" stroke-width="3.1" transform="rotate(90 32 32)"></ellipse>
 <circle cx="10.4" cy="19.2" fill="#4EC9EF" r="4.2"></circle><circle cx="50.5" cy="42.0" fill="#F276AC" r="4.1"></circle>
-</svg></div><div><div class="kicker">THAMAI PHUN SAWAT RAT NUKUL SCHOOL · CHEMISTRY PROJECT</div><div class="brandName">ALUMCHROM <span class="v17Version">PLATE SCANNER v1.8</span></div></div></div>
+</svg></div><div><div class="kicker">THAMAI PHUN SAWAT RAT NUKUL SCHOOL · CHEMISTRY PROJECT</div><div class="brandName">ALUMCHROM <span class="v17Version">PLATE SCANNER v1.9</span></div></div></div>
 </div></header>
 <main class="main v17Main">
 <section class="v17Welcome panel v18Welcome" id="v17Welcome"><div class="v17WelcomeArt"><span class="v17Orb"><svg aria-label="AlumChrom atom icon" class="v18Atom" height="44" role="img" viewbox="0 0 64 64" width="44" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +160,7 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 </svg></span><div class="v17ColorScale"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
 <div class="over">ALUMCHROM LAB · PLATE SCANNER</div><h1>การวิเคราะห์สี<br/>แม่นยำขึ้นในภาพเดียว</h1>
 <p>ตรวจวิเคราะห์ความเข้มข้นอะลูมิเนียม (III) ด้วยอินดิเคเตอร์ธรรมชาติ จากมาตรฐาน S1–S6 และตัวอย่าง 8 ชุด ชุดละ 3 หลุม</p>
-<button class="btn primary big v17StartButton" id="v17Start" type="button">เริ่มใช้งานโปรแกรม <span>→</span></button>
+<div class="v19WelcomeActions"><button class="btn primary big v17StartButton" id="v17Start" type="button">เริ่มใช้งานโปรแกรม <span>→</span></button><button class="btn v19TemplateButton" id="templateBtn" type="button">↓ ดาวน์โหลด Template (PDF)</button></div>
 <p class="scanTip">รองรับกล้องพร้อมตรวจแนวกระดาษ · ปรับตำแหน่งหลุม · ปรับแสงอัตโนมัติ · อ่านผล Blue Signal</p>
 </section>
 <section hidden="" id="v17App">
@@ -135,8 +176,8 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <div class="over">STEP 01 / 05</div><h2 class="sectionTitle">เลือกโหมดการทำงาน</h2><p class="subtitle">ทุกโหมดต้องเห็นหลุมสารมาตรฐาน S1–S6 ในภาพเดียวกับหลุมตัวอย่าง</p>
 <div class="modeGrid">
 <button class="modeCard" data-mode="template" type="button"><span class="modeIcon">▦</span><span><span class="modeNum">MODE 01</span><strong>กล้อง + Template</strong><small>ตรวจมาร์กดำและความเอียงของกล้องแบบสด พร้อมปลดล็อกการถ่ายเมื่อภาพผ่านเกณฑ์</small></span></button>
-<button class="modeCard" data-mode="plain" type="button"><span class="modeIcon">◎</span><span><span class="modeNum">MODE 02</span><strong>กล้อง + มาร์กหลุมเอง</strong><small>แสดงคำแนะนำให้ตั้งกล้องตรง แต่ไม่บังคับล็อกปุ่มถ่าย</small></span></button>
-<button class="modeCard" data-mode="upload" type="button"><span class="modeIcon">↥</span><span><span class="modeNum">MODE 03</span><strong>อัปโหลดภาพ</strong><small>ใช้ภาพที่ถ่ายจากที่อื่น รองรับทั้งภาพที่มีและไม่มี Template</small></span></button>
+<button class="modeCard" data-mode="plain" type="button"><span class="modeIcon">◎</span><span><span class="modeNum">MODE 02</span><strong>กล้องไม่ใช้ Template</strong><small>แนะนำมุมกล้องแต่ไม่ล็อกปุ่มถ่าย · โปรแกรมตรวจวงหลุมอัตโนมัติ ถ้าตรวจไม่ผ่านให้ถ่ายใหม่</small></span></button>
+<button class="modeCard" data-mode="upload" type="button"><span class="modeIcon">↥</span><span><span class="modeNum">MODE 03</span><strong>อัปโหลดภาพ</strong><small>ตรวจ Template และหมุนภาพให้อยู่ด้านถูกต้องอัตโนมัติ · หากไม่มี Template จะลองตรวจวงหลุม</small></span></button>
 </div>
 <div class="v17Actions"><span class="v17HelpText" id="v17ModeHelp">กรุณาเลือกหนึ่งโหมด</span><button class="btn primary big" disabled="" id="v17ModeNext" type="button">ถัดไป →</button></div>
 </div></div>
@@ -162,12 +203,17 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <p class="subtitle">ตรวจวงอ่านสี 30 หลุม และเลื่อนเฉพาะหลุมที่คลาดเคลื่อนก่อนอ่านผล</p>
 <div class="status" id="statusBox">รอภาพ</div>
 <div class="canvasWrap"><div class="canvasStage"><canvas height="700" id="plateCanvas" width="900"></canvas></div><div class="canvasInfo"><span id="canvasCaption">—</span><span id="markerCaption">—</span></div><div class="manualBox" id="manualBox"><span id="manualInstructions">เลือกจุดตามคำแนะนำ</span></div></div>
+<div class="v19UnderImage"><button class="btn v19CaptureAgain" id="v16NewImage" type="button">↻ ถ่ายใหม่</button><p id="v19OrientationHint">ตรวจตำแหน่งหลุมจากภาพอัตโนมัติ</p></div>
 
 
 
-</div></section><aside class="panel v18ToolsPanel"><div class="panelInner"><div class="over">WORKSPACE TOOLS · STEP 03/05</div><h2 class="sectionTitle">เครื่องมือจัดการรูป</h2><p class="subtitle v18AsideIntro">ใช้ปุ่มเพื่อจัดตำแหน่งหลุมให้ตรง ก่อนเริ่มอ่านผล</p><div class="toolBox v18ToolGroup"><h3 class="toolHeading">กำหนดตำแหน่งหลุม</h3><div class="toolbar">
-<button class="btn" id="autoBtn" type="button">✦ ตรวจ Template อัตโนมัติ</button><button class="btn" id="manualBtn" type="button">กำหนดมาร์กมุม 4 จุด</button><button class="btn" id="gridBtn" type="button">⊕ กำหนดตำแหน่งหลุม 4 จุด</button><button class="btn" id="rotateBtn" type="button">หมุนภาพ 90°</button><button class="btn" id="clearBtn" type="button">ล้างตำแหน่ง</button>
-</div></div><div class="toolBox v18ToolGroup"><h3 class="toolHeading">แก้ไขตำแหน่งรายหลุม</h3><div class="toolbar"><button class="btn primary" id="fineTuneBtn" type="button">✥ แก้ไขตำแหน่งรายหลุม</button><button class="btn" id="refineWellsBtn" type="button">ลองเกาะขอบหลุม</button><button class="btn" id="resetWellsBtn" type="button">คืนตำแหน่ง</button></div><p class="scanTip">แตะปุ่ม “ลากเลื่อนหลุม” แล้วลากวงที่ไม่ตรงไปยังกึ่งกลางหลุมจริงได้ทีละหลุม</p></div><div class="toolBox v18ToolGroup"><h3 class="toolHeading">ภาพและ Template</h3><div class="toolbar v18ImageActions" style="margin-top:14px"><button class="btn" id="v16NewImage" type="button">↻ ถ่ายใหม่ / เปลี่ยนภาพ</button><button class="btn" id="templateBtn" type="button">↓ ดาวน์โหลด Template (PDF)</button><button class="btn" id="guideBtn" type="button">◉ ดู Template มาตรฐาน</button><button class="btn" id="v18DownloadCorrected" type="button">↓ ดาวน์โหลดภาพหลังปรับแสง</button></div></div><div class="hint v18ReadyHint" id="v16ReadyMessage">กำหนดหลุมให้ครบก่อนเริ่มอ่านผล</div></div><div class="readFooter"><button class="btn primary big" disabled="" id="v16ReadBtn" type="button">⚗ อ่านผล</button><button class="btn" id="v17BackToCapture" style="width:100%;margin-top:8px" type="button">← กลับไปหน้าถ่ายภาพ</button><p class="scanTip">อ่านผลจากมาตรฐาน S1–S6 ที่อยู่ในภาพเดียวกันเท่านั้น หากตรวจมาตรฐานไม่ผ่านจะไม่รายงานค่า mg/L</p></div><div aria-hidden="true" class="v18InternalQC" hidden="">
+</div></section><aside class="panel v18ToolsPanel v19ToolsPanel"><div class="panelInner"><div class="over">WORKSPACE TOOLS · STEP 03/05</div><h2 class="sectionTitle">ตรวจและปรับตำแหน่ง</h2><p class="subtitle">ระบบจะหมุนภาพที่มี Template ให้ถูกด้าน และวางวงหลุมให้อัตโนมัติ</p>
+<div class="v19State"><span class="v19StateIcon">◎</span><div><strong id="v19DetectTitle">รอตรวจตำแหน่ง</strong><small id="v19DetectInfo">หลังถ่ายรูป ระบบจะตรวจหลุมก่อนเข้าสู่ขั้นตอนนี้</small></div></div>
+<div class="v19OnlyTool"><h3 class="toolHeading">แก้ไขตำแหน่งรายหลุม</h3><button class="btn primary big" id="fineTuneBtn" type="button">⌕ ซูมและแก้ไขหลุม</button><p class="scanTip">ซูม / เลื่อนภาพ แล้วเลือกหลุม S1–D6 ที่ต้องการแก้ได้อย่างอิสระ</p></div>
+<div class="hint v18ReadyHint" id="v16ReadyMessage">ระบบกำลังตรวจตำแหน่งหลุม</div></div>
+<div class="readFooter"><button class="btn primary big" disabled="" id="v16ReadBtn" type="button">⚗ อ่านผล</button><p class="scanTip">อ่านผลจากมาตรฐาน S1–S6 ในภาพเดียวกันเท่านั้น</p></div>
+<div hidden aria-hidden="true" id="v19LegacyTools"><button id="autoBtn"></button><button id="manualBtn"></button><button id="gridBtn"></button><button id="rotateBtn"></button><button id="clearBtn"></button><button id="refineWellsBtn"></button><button id="resetWellsBtn"></button><button id="guideBtn"></button><button id="v18DownloadCorrected"></button><button id="v17BackToCapture"></button></div>
+<div aria-hidden="true" class="v18InternalQC" hidden="">
 <div class="over">AUTO LIGHT &amp; QUALITY CHECK</div><h2 class="sectionTitle">ตรวจคุณภาพก่อนอ่าน</h2>
 <div class="summary"><div class="metric"><span>ขนาดภาพ</span><strong id="imgSize">—</strong><span id="imgName">—</span></div><div class="metric"><span>การระบุตำแหน่ง</span><strong id="scanState">รอ</strong><span id="scanSub">—</span></div></div>
 <div class="toolBox"><h3 class="toolHeading">ตำแหน่งมาร์กอ้างอิง</h3><div class="info" id="v15GeometryInfo">ยังไม่ได้อ่านมาร์ก</div></div>
@@ -195,8 +241,13 @@ body{background:radial-gradient(circle at 86% 0%,#E9F7FE 0,transparent 37%),var(
 <p class="help">ผลจากการเทียบสีเป็นการคัดกรองเชิงภาพเท่านั้น ค่าโซน 0 หมายถึงไม่พบ Blue Signal เพิ่มจาก blank ตามเกณฑ์ ไม่ใช่การยืนยันว่าไม่มี Al³⁺</p>
 </div></section></section>
 </section>
-<p class="v17Footnote">AlumChrom Plate Scanner v1.8 · Camera Alignment สำหรับโหมด Template · PDF Master Template 1.6</p>
+<p class="v17Footnote">AlumChrom Plate Scanner v1.9 · Camera Alignment สำหรับโหมด Template · PDF Master Template 1.6</p>
 </main>
+<div class="v19Modal" id="v19Modal" hidden role="dialog" aria-modal="true" aria-labelledby="v19EditorTitle">
+<div class="v19Dialog"><div class="v19EditorHeader"><div><div class="over">WELL POSITION EDITOR</div><h2 id="v19EditorTitle">ซูมและแก้ไขตำแหน่งหลุม</h2><p>เลื่อนภาพได้อิสระ · ลากวงหลุมให้ตรง · เลือกหลุมจากรายชื่อด้านขวา</p></div><button type="button" class="btn" id="v19EditorDoneTop">เสร็จสิ้น ✓</button></div>
+<div class="v19EditLayout"><div class="v19ZoomPanel"><div class="v19ZoomToolbar"><button class="btn" id="v19ZoomMinus" title="ซูมออก" type="button">−</button><button class="btn" id="v19ZoomPlus" title="ซูมเข้า" type="button">＋</button><button class="btn" id="v19ZoomFit" type="button">พอดีภาพ</button><span id="v19ZoomValue">100%</span><span class="v19HelpHint">ลากพื้นหลัง = เลื่อนภาพ · ลากวง = เลื่อนหลุม · สองนิ้ว = ซูม</span></div>
+<div class="v19ZoomViewport"><canvas id="v19ZoomCanvas" width="1060" height="710" aria-label="ภาพซูมสำหรับปรับตำแหน่งรายหลุม"></canvas></div></div>
+<aside class="v19WellSidebar"><strong>เลือกหลุมที่จะปรับ</strong><p id="v19SelectedLabel">เลือกหลุมได้โดยตรงบนภาพ</p><div id="v19WellButtons" class="v19WellButtons"></div><div class="v19EditorActions"><button id="v19ResetOne" class="btn" type="button">คืนตำแหน่งหลุมนี้</button><button id="v19ResetAll" class="btn" type="button">คืนตำแหน่งทุกหลุม</button><button id="v19EditorDone" class="btn primary" type="button">บันทึกและกลับไปตรวจรูป ✓</button></div></aside></div></div></div>
 <div class="toast" id="toast" role="status"></div>
 <div hidden><button id="demoBtn">demo</button><input id="v15LightToggle" type="checkbox" checked><input id="v15LightStrength" type="range" value="75"><span id="v15LightPct">75%</span></div>
 <script>
@@ -435,7 +486,7 @@ function exportCSV(){
 }
 function reportText(){
  if(!analysis)return 'ยังไม่มีผลการวิเคราะห์';
- let txt=`AlumChrom Plate Scanner v1.8 · Capture • Align • Analyze · Blue Signal\nภาพ: ${imageName}\nมาตรฐานในภาพ: ${LEVELS.join(', ')} mg/L\nหลักการ: Blue Signal = b*มาตรฐาน0 − b*ตัวอย่าง\n`;
+ let txt=`AlumChrom Plate Scanner v1.9 · Capture • Align • Analyze · Blue Signal\nภาพ: ${imageName}\nมาตรฐานในภาพ: ${LEVELS.join(', ')} mg/L\nหลักการ: Blue Signal = b*มาตรฐาน0 − b*ตัวอย่าง\n`;
  analysis.sampleResults.forEach(r=>{txt+=`\nตัวอย่าง ${r.sample}: ${formatResult(r.estimation)} · Blue Signal ${r.estimation?r.estimation.blueSignal.toFixed(2):'—'} b* · อ่านได้ ${r.filledCount}/3 ${r.estimation?.warning||''}`});
  return txt+'\n\nหมายเหตุ: โซน 0 ไม่ใช่หลักฐานยืนยันว่าอะลูมิเนียมไม่มีอยู่จริง ต้องตรวจสอบกับ blank มาตรฐานและ LOD'
 }
@@ -782,7 +833,7 @@ $('refineWellsBtn').addEventListener('click',v15RefineWellCenters);
 // Hook the new calibration into that exact user action, without an extra click.
 // Manual completion handled once on fourth reference point.
 
-$('fileInput').addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;if(!file.type.startsWith('image/')){toast('กรุณาเลือกไฟล์ภาพ');return}const fr=new FileReader();fr.onload=()=>loadImage(fr.result,file.name);fr.readAsDataURL(file);e.target.value='';});
+// v1.9: file input is handled once in v17HandleFile (avoids double upload processing).
 $('demoBtn').addEventListener('click',()=>loadImage(DEMO_IMAGE,'ภาพถาดจริงแผ่นใหม่ (ยังไม่มีน้ำยา)'));
 $('autoBtn').addEventListener('click',autoDetectCorners);
 $('manualBtn').addEventListener('click',()=>startManual('marker'));
@@ -1135,7 +1186,7 @@ v16Step(0);v16Ready();
 window.AlumChromV17={inspectFrame:v17InspectFrame,levels:LEVELS.slice(),getStage:()=>v17CurrentPage};
 
 
-// v1.8: tool-rail actions and separate full-table report screen.
+// v1.9: tool-rail actions and separate full-table report screen.
 $('v18ToTable').addEventListener('click',()=>{
  if(!v16ResultsShown || !analysis){toast('กรุณาอ่านผลก่อนดูตารางสรุป');return;}
  v16Step(5);
@@ -1151,6 +1202,306 @@ $('v18DownloadCorrected').addEventListener('click',()=>{
  }catch(e){toast('ดาวน์โหลดภาพไม่สำเร็จ: '+(e?.message||e));}
 });
 window.AlumChromV18={getStage:()=>v17CurrentPage, levels:LEVELS.slice(),version:'1.8'};
+
+
+// v1.9 — Orientation by exterior text signature; fiducials alone are 180-degree symmetric.
+let v19DetectionValid=false,v19OrientationLabel='',v19FreeLayout=null,v19DetectedWells=0;
+const v19Canvas=$('v19ZoomCanvas'),v19Cx=v19Canvas.getContext('2d');
+let v19IsOpen=false,v19Selected='S1',v19Zoom=1,v19ViewX=0,v19ViewY=0,v19Fit=1,v19Gesture=null;
+const v19Pointers=new Map();
+function v19MapQuad(points,u,v){const [tl,tr,br,bl]=points;return {x:tl.x*(1-u)*(1-v)+tr.x*u*(1-v)+br.x*u*v+bl.x*(1-u)*v,y:tl.y*(1-u)*(1-v)+tr.y*u*(1-v)+br.y*u*v+bl.y*(1-u)*v};}
+function v19FindCornerMarkers(all,w,h){
+ if(all.length<8)return null;
+ const med=median(all.map(q=>q.area));
+ const clean=all.filter(q=>q.area<=med*3.7&&q.width/q.height>.60&&q.width/q.height<1.60);
+ if(clean.length<8)return null;
+ // Find the largest four corner-type squares, then order them spatially.
+ const sorted=clean.slice().sort((a,b)=>b.score-a.score);
+ const markers=sorted.slice(0,4);
+ if(markers.length!==4)return null;
+ const ySorted=markers.sort((a,b)=>a.y-b.y);
+ const t=ySorted.slice(0,2).sort((a,b)=>a.x-b.x),b=ySorted.slice(2).sort((a,b)=>a.x-b.x);
+ const quad=[t[0],t[1],b[1],b[0]];
+ const spanX=Math.max(...quad.map(p=>p.x))-Math.min(...quad.map(p=>p.x));
+ const spanY=Math.max(...quad.map(p=>p.y))-Math.min(...quad.map(p=>p.y));
+ if(spanX<w*.23||spanY<h*.20)return null;
+ return quad;
+}
+function v19ScoreBand(pixels,w,h,quad,u0,u1,v0,v1){
+ let black=0,valid=0;
+ const xSteps=28,ySteps=60;
+ for(let yi=0;yi<ySteps;yi++){
+  let v=v0+(v1-v0)*(yi+.5)/ySteps;
+  for(let xi=0;xi<xSteps;xi++){
+   let u=u0+(u1-u0)*(xi+.5)/xSteps;
+   const p=v19MapQuad(quad,u,v),x=p.x|0,y=p.y|0;
+   if(x<1||y<1||x>=w-1||y>=h-1)continue;
+   const k=(y*w+x)*4,r=pixels[k],g=pixels[k+1],b=pixels[k+2];
+   const l=.2126*r+.7152*g+.0722*b;
+   // Require near-neutral dark printed ink, not a purple well edge.
+   if(l<145&&Math.max(r,g,b)-Math.min(r,g,b)<58)black++;
+   valid++;
+  }
+ }
+ return {dark:black,valid,ratio:valid?black/valid:0};
+}
+function v19TemplateOrientation(){
+ const ds=downscaledImage(860),w=ds.w,h=ds.h,pixels=ds.ctx.getImageData(0,0,w,h).data;
+ const all=findMarkerCandidates(pixels,w,h),q=v19FindCornerMarkers(all,w,h);
+ if(!q)return null;
+ const variants=[
+  [q[0],q[1],q[2],q[3]],
+  [q[3],q[0],q[1],q[2]],
+  [q[2],q[3],q[0],q[1]],
+  [q[1],q[2],q[3],q[0]]
+ ];
+ const ranked=variants.map((quad,turns)=>{
+  const left=v19ScoreBand(pixels,w,h,quad,-.140,-.035,.10,.90);
+  const bottom=v19ScoreBand(pixels,w,h,quad,.13,.88,1.045,1.155);
+  const right=v19ScoreBand(pixels,w,h,quad,1.035,1.140,.10,.90);
+  const top=v19ScoreBand(pixels,w,h,quad,.13,.88,-.155,-.045);
+  // Balanced evidence: text on both left and bottom, absent on right/top.
+  const score=3*Math.min(left.ratio,bottom.ratio)+left.ratio+bottom.ratio-1.1*(right.ratio+top.ratio);
+  return {turns,score,left:left.ratio,bottom:bottom.ratio,right:right.ratio,top:top.ratio,quad};
+ }).sort((a,b)=>b.score-a.score);
+ const best=ranked[0],other=ranked[1];
+ const confidence=(best.left>.006&&best.bottom>.006&&best.score>other.score+.020);
+ return {rotations:ranked,turns:best.turns,confidence,markers:all.length,score:best.score,margin:best.score-other.score};
+}
+function v19Status(title,info,warning=false){
+ $('v19DetectTitle').textContent=title;$('v19DetectInfo').textContent=info;
+ $('v19DetectTitle').closest('.v19State').classList.toggle('warning',warning);
+ $('v19OrientationHint').textContent=info;
+}
+// Free-image detection: approximate radial symmetry of 30 circular wells, followed by lattice validation.
+function v19DetectWellGrid(){
+ const ds=downscaledImage(640),w=ds.w,h=ds.h,pixels=ds.ctx.getImageData(0,0,w,h).data;
+ if(w<280||h<300)return null;
+ const gray=new Uint8Array(w*h);
+ for(let k=0;k<gray.length;k++)gray[k]=Math.round(.299*pixels[k*4]+.587*pixels[k*4+1]+.114*pixels[k*4+2]);
+ const votes=new Uint16Array(w*h),scale=Math.min(w,h);
+ const rMin=Math.max(10,Math.round(scale*.027)),rMax=Math.round(scale*.083),radii=[];
+ for(let r=rMin;r<=rMax;r+=Math.max(3,Math.round(scale*.009)))radii.push(r);
+ for(let y=3;y<h-3;y+=2){
+  for(let x=3;x<w-3;x+=2){
+   const at=y*w+x,gx=gray[at+2]-gray[at-2],gy=gray[at+2*w]-gray[at-2*w],mag=Math.hypot(gx,gy);
+   if(mag<28)continue;
+   const nx=gx/mag,ny=gy/mag;
+   for(const r of radii){
+    const dx=Math.round(nx*r),dy=Math.round(ny*r);
+    for(const sign of [-1,1]){
+     const cx=x+sign*dx,cy=y+sign*dy;
+     if(cx>5&&cx<w-5&&cy>5&&cy<h-5){const p=cy*w+cx;if(votes[p]<65535)votes[p]++;}
+    }
+   }
+  }
+ }
+ const xHist=new Float32Array(w),yHist=new Float32Array(h);
+ for(let y=5;y<h-5;y+=2)for(let x=5;x<w-5;x+=2){let v=votes[y*w+x];xHist[x]+=v;yHist[y]+=v;}
+ const smoothed=(arr)=>{
+  let out=new Float32Array(arr.length),rad=5;
+  for(let i=rad;i<arr.length-rad;i++)for(let j=-rad;j<=rad;j++)out[i]+=arr[i+j];
+  return out;
+ };
+ const xH=smoothed(xHist),yH=smoothed(yHist);
+ function findAxis(hist,n,vertical=false){
+  const L=hist.length;
+  let best={score:-Infinity};
+  const stMin=Math.round(L*.065),stMax=Math.round(L*.38),dMin=Math.round(L*.075),dMax=Math.round(L*.205);
+  const steps=vertical?[1.2,1.4,1.6,1.8,2.0]:[1];
+  for(let x0=stMin;x0<=stMax;x0+=5)for(let d=dMin;d<=dMax;d+=4){
+   for(const gap of steps){
+    const positions=vertical?[x0,x0+d*gap,x0+d*(gap+1),x0+d*(gap+2),x0+d*(gap+3)]:Array.from({length:n},(_,j)=>x0+j*d);
+    if(positions.length!==n||positions[n-1]>L*.94)continue;
+    const score=positions.reduce((sum,p)=>sum+hist[Math.max(0,Math.min(L-1,Math.round(p)))],0);
+    if(score>best.score)best={score,positions,d,gap};
+   }
+  }
+  return best;
+ }
+ const X=findAxis(xH,6),Y=findAxis(yH,5,true);
+ if(!X.positions||!Y.positions)return null;
+ const cells=[],localR=Math.max(5,Math.round(Math.min(X.d,Y.d)*.23));
+ let successes=0,totalScore=0;
+ for(let r=0;r<5;r++){
+  const row=[];
+  for(let c=0;c<6;c++){
+   const x0=Math.round(X.positions[c]),y0=Math.round(Y.positions[r]);
+   let best={score:0,x:x0,y:y0};
+   for(let yy=y0-localR;yy<=y0+localR;yy+=2)for(let xx=x0-localR;xx<=x0+localR;xx+=2){
+    if(xx<2||yy<2||xx>=w-2||yy>=h-2)continue;
+    let s=0;for(let dy=-2;dy<=2;dy+=2)for(let dx=-2;dx<=2;dx+=2)s+=votes[(yy+dy)*w+(xx+dx)];
+    if(s>best.score)best={score:s,x:xx,y:yy};
+   }
+   if(best.score>=6)successes++;
+   totalScore+=best.score;
+   row.push(best);
+  }
+  cells.push(row);
+ }
+ // A false lattice of image edges must never be treated as a valid 30-well scan.
+ if(successes<23||totalScore<265)return null;
+ const xs=X.positions.map(x=>x*ds.scaleX),ys=Y.positions.map(y=>y*ds.scaleY);
+ // confidence via position consistency of the circular centers
+ const maxOffset=Math.min(X.d,Y.d)*.22;
+ const consistent=cells.flat().filter((v,i)=>Math.abs(v.x-X.positions[i%6])<=maxOffset&&Math.abs(v.y-Y.positions[(i/6)|0])<=maxOffset).length;
+ if(consistent<25)return null;
+ return {xs,ys,cells,successes,totalScore,w,h,scaleX:ds.scaleX,scaleY:ds.scaleY,rx:Math.min(X.d,Y.d)*ds.scaleX*.37,ry:Math.min(X.d,Y.d)*ds.scaleY*.37};
+}
+function v19ApplyFreeGrid(det){
+ const [x0,x5]=[det.xs[0],det.xs[5]], [y0,y4]=[det.ys[0],det.ys[4]];
+ if(x5-x0<80||y4-y0<80)return false;
+ geometryMode='centers';v19FreeLayout={x:det.xs.map(x=>(x-x0)/(x5-x0)),yStd:0,yRows:det.ys.slice(1).map(y=>(y-y0)/(y4-y0)),radiusX:det.rx/(x5-x0),radiusY:det.ry/(y4-y0)};
+ corners=[{x:x0,y:y0},{x:x5,y:y0},{x:x5,y:y4},{x:x0,y:y4}];
+ v15ResetGeometry();
+ // Fine corrections from individual well circle voting peaks.
+ const defs=getWellDefs();
+ defs.forEach(w=>{const ri=w.well[0]==='S'?0:'ABCD'.indexOf(w.well[0])+1,ci=Number(w.well[1])-1,cell=det.cells[ri][ci];
+  const base=bilinear(w.u,w.v);v15WellOffsets[w.well]={x:cell.x*det.scaleX-base.x,y:cell.y*det.scaleY-base.y};
+ });
+ v16LightingCorrection();analyzePlate();return true;
+}
+function currentLayout(){return geometryMode==='centers'?(v19FreeLayout||CENTER_LAYOUT):LAYOUT;}
+function v19ApplyImageAlignment(){
+ v19DetectionValid=false;v19OrientationLabel='';v19FreeLayout=null;v19DetectedWells=0;
+ corners=[];analysis=null;geometryMode='marker';manualMode=false;v15ResetGeometry();
+ let detection=null;
+ if(v16Mode!=='plain'){
+  try{detection=v19TemplateOrientation()}catch(err){console.warn('Template orientation:',err)}
+ }
+ if(detection&&detection.confidence){
+  const turns=detection.turns;
+  if(turns){rotation=turns;renderImageToOff()}
+  autoDetectCorners();
+  if(corners.length===4 && v15MarkerMatches.length>=14){
+   v19DetectionValid=true;v19OrientationLabel=turns?'หมุนภาพอัตโนมัติ '+(turns*90)+'°':'ภาพอยู่ในแนวถูกต้องแล้ว';
+   v19Status('ตรวจ Template สำเร็จ',v19OrientationLabel+' · S–D ทางซ้าย / 1–6 ด้านล่าง · ตรวจมาร์ก '+v15MarkerMatches.length+'/26 จุด');
+   return true;
+  }
+  corners=[];v15ResetGeometry();
+ }
+ if(v16Mode==='template'||(detection&&!detection.confidence&&v16Mode==='upload'&&detection.margin>0.004)){
+  v19Status('ระบุทิศทาง Template ไม่มั่นใจ','กรุณาให้เห็นมาร์ก อักษร S–D และเลข 1–6 ครบถ้วน แล้ว'+(v16Mode==='upload'?'เปลี่ยนภาพ':'ถ่ายใหม่'),true);
+  setStatus('ไม่สามารถยืนยันทิศทาง Template ได้ · ไม่วิเคราะห์หลุมจากภาพนี้','warn');return false;
+ }
+ // Markerless scan: detect the 30 wells, but NEVER guess an unvalidated lattice.
+ try{const free=v19DetectWellGrid();if(free&&v19ApplyFreeGrid(free)){
+  v19DetectionValid=true;v19DetectedWells=free.successes;
+  v19Status('ตรวจวงหลุมสำเร็จ','ตรวจโครง 5×6 ได้ '+free.successes+'/30 จุด · ภาพไม่มี Template · กรุณาตรวจวงก่อนอ่านผล');
+  setStatus('ตรวจวงหลุมเบื้องต้นแล้ว · เลื่อนแก้เฉพาะหลุมที่ไม่ตรง','good');return true;
+ }}catch(err){console.warn('Circle grid detection:',err)}
+ corners=[];analysis=null;v15ResetGeometry();updateOutputs();drawScene();
+ v19Status('ตรวจหลุมอัตโนมัติไม่สำเร็จ','กรุณา'+(v16Mode==='upload'?'เปลี่ยนภาพ':'ถ่ายใหม่')+' ให้เห็น 30 หลุมชัดเจนในแนว S, A–D และ 1–6',true);
+ setStatus('ไม่พบตำแหน่งหลุมที่เชื่อถือได้ · ยังไม่สามารถอ่านผล','warn');return false;
+}
+function v16ImageReady(){
+ v16StopCamera();v16InvalidateResults();v16Step(3);
+ v19ApplyImageAlignment();v16Ready();drawScene();
+ $('v16NewImage').textContent=v16Mode==='upload'?'↥ เปลี่ยนภาพ':'↻ ถ่ายใหม่';
+}
+function v16Ready(){
+ const positioned=!!originalImage&&corners.length===4&&v19DetectionValid;
+ $('v16ReadBtn').disabled=!positioned;
+ if(!originalImage){$('v16ReadyMessage').textContent='ยังไม่มีภาพถาดทดลอง';return}
+ $('v16ReadyMessage').textContent=positioned?'จัดตำแหน่งหลุมแล้ว · ตรวจวงและแก้ไขรายหลุมได้ก่อนอ่านผล':'ภาพนี้ยังตรวจตำแหน่งไม่ผ่าน · กรุณา'+(v16Mode==='upload'?'เปลี่ยนภาพ':'ถ่ายใหม่');
+ if(!positioned){$('scanState').textContent='ตรวจสอบ';$('scanSub').textContent='ยังไม่มีตำแหน่งหลุมที่เชื่อถือได้'}
+}
+function v16AnalyzeClick(){
+ if(!v19DetectionValid||!originalImage||corners.length!==4){toast('กรุณาใช้ภาพที่ตรวจตำแหน่งหลุมผ่านก่อน');return}
+ v16ResultsShown=true;analyzePlate();$('v16ResultsPanel').hidden=false;
+ if(!analysis?.validStandards){$('v16ReportQC').className='hint warn';$('v16ReportQC').textContent='ไม่สามารถรายงานค่า mg/L: มาตรฐาน S1–S6 ไม่ครบ หรือ Blue Signal ไม่เพิ่มขึ้นอย่างน่าเชื่อถือ';setStatus('มาตรฐานไม่ผ่าน QC','warn')}
+ else{$('v16ReportQC').className='hint';$('v16ReportQC').textContent='มาตรฐาน S1–S6 ผ่านเกณฑ์ตรวจสอบเบื้องต้น · โปรดตรวจหลุมซ้ำก่อนใช้ผล';setStatus('อ่านผลสำเร็จ','good')}
+ v16Step(4);
+}
+// Full-screen image navigator. Visual zoom/pan never modifies source pixel colors.
+function v19SelectedDefinition(){return getWellDefs().find(w=>w.well===v19Selected)||getWellDefs()[0]}
+function v19EditorSource(){return v15LightingEnabled&&v15Corrected.width===off.width&&v15Corrected.height===off.height?v15Corrected:off}
+function v19EditPoint(e){const r=v19Canvas.getBoundingClientRect();return {x:(e.clientX-r.left)*v19Canvas.width/r.width,y:(e.clientY-r.top)*v19Canvas.height/r.height}}
+function v19FitView(){
+ v19Fit=Math.min(v19Canvas.width/Math.max(1,off.width),v19Canvas.height/Math.max(1,off.height));v19Zoom=1;
+ v19ViewX=(v19Canvas.width-off.width*v19Fit)/2;v19ViewY=(v19Canvas.height-off.height*v19Fit)/2;v19RenderEditor();
+}
+function v19MapToImage(p){const s=v19Fit*v19Zoom;return {x:(p.x-v19ViewX)/s,y:(p.y-v19ViewY)/s}}
+function v19ZoomTo(value,anchor=null){
+ const pos=anchor||{x:v19Canvas.width/2,y:v19Canvas.height/2};const before=v19MapToImage(pos);
+ v19Zoom=clamp(value,.65,12);const scale=v19Fit*v19Zoom;
+ v19ViewX=pos.x-before.x*scale;v19ViewY=pos.y-before.y*scale;v19RenderEditor();
+}
+function v19CenterSelected(zoom=3.2){
+ const g=v15WellGeometry(v19SelectedDefinition());v19Zoom=clamp(zoom,.65,12);
+ const s=v19Fit*v19Zoom;v19ViewX=v19Canvas.width/2-g.c.x*s;v19ViewY=v19Canvas.height/2-g.c.y*s;v19RenderEditor();
+}
+function v19RenderEditor(){
+ if(!v19IsOpen)return;
+ const W=v19Canvas.width,H=v19Canvas.height,s=v19Fit*v19Zoom,source=v19EditorSource();
+ v19Cx.setTransform(1,0,0,1,0,0);v19Cx.fillStyle='#e5eaf1';v19Cx.fillRect(0,0,W,H);
+ v19Cx.save();v19Cx.translate(v19ViewX,v19ViewY);v19Cx.scale(s,s);v19Cx.drawImage(source,0,0);
+ for(const w of getWellDefs()){
+  const g=v15WellGeometry(w),selected=w.well===v19Selected;
+  v19Cx.beginPath();v19Cx.ellipse(g.c.x,g.c.y,g.rx*.77,g.ry*.77,0,0,Math.PI*2);
+  v19Cx.strokeStyle=selected?'#ec3d89':w.kind==='standard'?'#11b6a4':'#efb42b';v19Cx.lineWidth=(selected?5:Math.max(2,2/v19Fit))/s;v19Cx.stroke();
+  if(selected){v19Cx.beginPath();v19Cx.arc(g.c.x,g.c.y,7/s,0,Math.PI*2);v19Cx.fillStyle='#ec3d89';v19Cx.fill()}
+  v19Cx.font=`700 ${Math.max(12,17/s)}px system-ui`;v19Cx.fillStyle=selected?'#c61e66':'#29254b';v19Cx.fillText(w.well,g.c.x-14/s,g.c.y-g.ry-10/s);
+ }
+ v19Cx.restore();
+ $('v19ZoomValue').textContent=Math.round(v19Zoom*100)+'%';
+ $('v19SelectedLabel').textContent='เลือก '+v19Selected+' · ลากวงเพื่อปรับตำแหน่ง';
+ document.querySelectorAll('#v19WellButtons button').forEach(b=>b.classList.toggle('selected',b.dataset.well===v19Selected));
+}
+function v19SelectWell(id,focus=true){v19Selected=id;focus?v19CenterSelected(Math.max(v19Zoom,3)):v19RenderEditor()}
+function v19OpenEditor(){
+ if(!v19DetectionValid||corners.length!==4){toast('กรุณาใช้ภาพที่ตรวจพบหลุมก่อน');return}
+ v19IsOpen=true;v19Selected='S1';v19Pointers.clear();v19Gesture=null;
+ $('v19Modal').hidden=false;document.body.style.overflow='hidden';
+ const holder=$('v19WellButtons');holder.innerHTML='';
+ getWellDefs().forEach(w=>{const b=document.createElement('button');b.type='button';b.textContent=w.well;b.dataset.well=w.well;if(w.kind==='standard')b.className='is-standard';b.addEventListener('click',()=>v19SelectWell(w.well));holder.appendChild(b)});
+ v19FitView();
+}
+function v19CloseEditor(){
+ if(!v19IsOpen)return;v19IsOpen=false;v19Pointers.clear();v19Gesture=null;$('v19Modal').hidden=true;document.body.style.overflow='';
+ v16InvalidateResults();analyzePlate();v16Ready();drawScene();toast('บันทึกตำแหน่งหลุมแล้ว');
+}
+function v15ToggleFine(){v19OpenEditor()}
+function v19ResetOne(){delete v15WellOffsets[v19Selected];v19RenderEditor()}
+function v19ResetAll(){v15WellOffsets={};v19RenderEditor()}
+v19Canvas.addEventListener('pointerdown',e=>{
+ if(!v19IsOpen)return;e.preventDefault();try{v19Canvas.setPointerCapture(e.pointerId)}catch(err){}
+ const p=v19EditPoint(e);v19Pointers.set(e.pointerId,p);
+ if(v19Pointers.size===2){const a=Array.from(v19Pointers.values());v19Gesture={type:'pinch',distance:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y),zoom:v19Zoom,mid:{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2}};return;}
+ const ip=v19MapToImage(p),candidates=getWellDefs().map(w=>({w,g:v15WellGeometry(w)}));
+ const hit=candidates.map(q=>({...q,d:Math.hypot(q.g.c.x-ip.x,q.g.c.y-ip.y)})).sort((a,b)=>a.d-b.d)[0];
+ if(hit&&hit.d<Math.max(hit.g.rx,hit.g.ry)*1.2){
+  v19Selected=hit.w.well;v19Gesture={type:'well',id:hit.w.well,start:ip,base:v15WellOffsets[hit.w.well]||{x:0,y:0}};
+ }else v19Gesture={type:'pan',start:p,x:v19ViewX,y:v19ViewY};
+ v19RenderEditor();
+});
+v19Canvas.addEventListener('pointermove',e=>{
+ if(!v19Pointers.has(e.pointerId)||!v19Gesture)return;
+ e.preventDefault();const p=v19EditPoint(e);v19Pointers.set(e.pointerId,p);
+ if(v19Pointers.size>=2){
+  const a=Array.from(v19Pointers.values());if(v19Gesture.type!=='pinch')v19Gesture={type:'pinch',distance:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y),zoom:v19Zoom,mid:{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2}};
+  const dist=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y),mid={x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2};
+  v19ZoomTo(v19Gesture.zoom*dist/Math.max(1,v19Gesture.distance),mid);return;
+ }
+ const g=v19Gesture;
+ if(g.type==='pan'){v19ViewX=g.x+p.x-g.start.x;v19ViewY=g.y+p.y-g.start.y;v19RenderEditor()}
+ if(g.type==='well'){
+  const ip=v19MapToImage(p);
+  v15WellOffsets[g.id]={x:g.base.x+ip.x-g.start.x,y:g.base.y+ip.y-g.start.y};v19RenderEditor();
+ }
+});
+function v19EndPointer(e){v19Pointers.delete(e.pointerId);if(v19Pointers.size<2)v19Gesture=null}
+v19Canvas.addEventListener('pointerup',v19EndPointer);v19Canvas.addEventListener('pointercancel',v19EndPointer);
+v19Canvas.addEventListener('wheel',e=>{if(!v19IsOpen)return;e.preventDefault();v19ZoomTo(v19Zoom*(e.deltaY<0?1.18:.85),v19EditPoint(e))},{passive:false});
+$('v19ZoomPlus').addEventListener('click',()=>v19ZoomTo(v19Zoom*1.4));
+$('v19ZoomMinus').addEventListener('click',()=>v19ZoomTo(v19Zoom/1.4));
+$('v19ZoomFit').addEventListener('click',v19FitView);
+$('v19ResetOne').addEventListener('click',v19ResetOne);$('v19ResetAll').addEventListener('click',v19ResetAll);
+$('v19EditorDone').addEventListener('click',v19CloseEditor);$('v19EditorDoneTop').addEventListener('click',v19CloseEditor);
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&v19IsOpen)v19CloseEditor()});
+// Explicitly preserve mode-specific retake vs replace copy under the photo.
+$('v16NewImage').addEventListener('click',()=>{$('v16NewImage').textContent=v16Mode==='upload'?'↥ เปลี่ยนภาพ':'↻ ถ่ายใหม่'});
+window.AlumChromV19={getStage:()=>v17CurrentPage,orient:v19TemplateOrientation,detectFree:v19DetectWellGrid,getDetection:()=>({valid:v19DetectionValid,mode:v16Mode,orientation:v19OrientationLabel,free:v19DetectedWells}),getEditor:()=>({open:v19IsOpen,selected:v19Selected,zoom:v19Zoom}),version:'1.9'};
 
 </script>
 </body>
